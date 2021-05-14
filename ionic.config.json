@@ -1,0 +1,7 @@
+{
+  "name": "creditoParaTi",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
