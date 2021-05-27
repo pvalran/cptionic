@@ -1,0 +1,55 @@
+<ion-toolbar color="medium">
+  <ion-buttons slot="start">
+    <ion-menu-button autoHide="false"></ion-menu-button>
+  </ion-buttons>
+  <p>Enrolamiento Solicitud de credito</p>
+</ion-toolbar>
+<ion-content >
+  <ion-row>
+    <ion-col sizeLg="1" sizeMd="0" sizeXs="0"></ion-col>
+    <ion-col sizeLg="10" sizeMd="12" sizeXs="12">
+      <div id="container">
+        <div class="divisorSolicitud">
+          <p>Capturar identificacion</p>
+        </div>
+        <form>
+          <ion-row>
+            <ion-col sizeXl="4" sizeLg="6" sizeMd="6" sizeXs="12">
+              <span class="labelForm">Seleccione el tipo de documento de indentidad</span>
+              <ion-item lines="full">
+                <ion-select placeholder="Seleccione el tipo de documento" style="width: 100%;">
+                  <ion-select-option value="c">Credencial de elector</ion-select-option>
+                  <ion-select-option value="l">Licencia de conducir</ion-select-option>
+                </ion-select>
+              </ion-item>
+            </ion-col>
+            <ion-col sizeXl="4" sizeLg="6" sizeMd="6" sizeXs="12">
+              <span class="labelForm">captura el anverso del documento</span>
+              <br />
+              <img (click)="useCamara()" src="../../assets/img/camera-outline.svg" class="imageCamera">
+            </ion-col>
+            <ion-col sizeXl="4" sizeLg="6" sizeMd="6" sizeXs="12">
+              <span class="labelForm">Captura el reverso del documento</span>
+              <br />
+              <img src="../../assets/img/camera-outline.svg" class="imageCamera">
+            </ion-col>
+          </ion-row>
+          <div class="divisorSolicitud">
+            <p>Capturar selfie</p>
+          </div>
+          <ion-row style="margin-bottom: 70px;">
+            <ion-col sizeXl="4" sizeLg="6" sizeMd="6" sizeXs="12">
+              <img src="../../assets/img/camera-outline.svg" class="imageCamera">
+            </ion-col>
+          </ion-row>
+          <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+            <ion-fab-button (click)="guardarIdCapture()">
+              <img src="../../assets/img/save_white.svg" class="btnSave">
+            </ion-fab-button>
+          </ion-fab>
+        </form>
+      </div>
+    </ion-col>
+    <ion-col sizeLg="1" sizeMd="0" sizeXs="0"></ion-col>
+  </ion-row>
+</ion-content>

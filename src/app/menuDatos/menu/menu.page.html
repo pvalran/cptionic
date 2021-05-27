@@ -1,0 +1,60 @@
+<ion-toolbar color="medium">
+  <ion-buttons slot="start">
+    <ion-menu-button autoHide="false"></ion-menu-button>
+  </ion-buttons>
+  <p>Enrolamiento Solicitud de credito</p>
+</ion-toolbar>
+<ion-content >
+  <ion-row>
+    <ion-col sizeXl="1" sizeMd="0" sizeXs="0"></ion-col>
+    <ion-col sizeXl="10" sizeMd="12" sizeXs="12">
+      <div>
+        <ion-row>
+            <ion-col sizeXl="2" sizeMd="4" sizeXs="6" style="padding: 2ch;">
+              <div class="divBtnMenu" (click)="adicionales()">
+                <p>Datos del Solicitante - Adicionales</p>
+                <ion-checkbox class="checkPersonal" disabled="true" color="medium"></ion-checkbox>
+              </div>
+            </ion-col>
+            <ion-col sizeXl="2" sizeMd="4" sizeXs="6" style="padding: 2ch;">
+              <div class="divBtnMenu" (click)="dependientesEconomicos()">
+                <p>Datos del Solicitante - Dependientes Economicos</p>
+                <ion-checkbox class="checkPersonal" disabled="true" color="medium"></ion-checkbox>
+              </div>
+            </ion-col>
+            <ion-col sizeXl="2" sizeMd="4" sizeXs="6" style="padding: 2ch;">
+              <div class="divBtnMenu" (click)="conyuge()">
+                <p>Datos del Solicitante - Datos del conyuge</p>
+                <ion-checkbox class="checkPersonal" disabled="true" color="medium"></ion-checkbox>
+              </div>
+            </ion-col>
+            <ion-col sizeXl="2" sizeMd="4" sizeXs="6" style="padding: 2ch;">
+              <div class="divBtnMenu" (click)="laborales()">
+                <p>Datos del Solicitante - Laborales</p>
+                <ion-checkbox class="checkPersonal" disabled="true" color="medium"></ion-checkbox>
+              </div>
+            </ion-col>
+            <ion-col sizeXl="2" sizeMd="4" sizeXs="6" style="padding: 2ch;">
+              <div class="divBtnMenu" (click)="referencias()">
+                <p>Datos del Solicitante - Ref. Personales</p>
+                <ion-checkbox class="checkPersonal" disabled="true" color="medium"></ion-checkbox>
+              </div>
+            </ion-col>
+            <ion-col sizeXl="2" sizeMd="4" sizeXs="6" style="padding: 2ch;">
+              <div class="divBtnMenu" (click)="cuestionariomedico()">
+                <p>Cuestionario medico</p>
+                <ion-checkbox class="checkPersonal" disabled="true" color="medium"></ion-checkbox>
+              </div>
+            </ion-col>
+            <ion-col sizeXl="2" sizeMd="4" sizeXs="6" style="padding: 2ch;">
+              <div class="divBtnMenu" (click)="inmueble()">
+                <p>Datos del inmueble</p>
+                <ion-checkbox class="checkPersonal" disabled="true" color="medium"></ion-checkbox>
+              </div>
+            </ion-col>
+        </ion-row>
+      </div>
+    </ion-col>
+    <ion-col sizeXl="1" sizeMd="0" sizeXs="0"></ion-col>
+  </ion-row>
+</ion-content>

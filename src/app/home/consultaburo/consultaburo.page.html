@@ -1,0 +1,56 @@
+<ion-toolbar color="medium">
+  <ion-buttons slot="start">
+    <ion-menu-button autoHide="false"></ion-menu-button>
+  </ion-buttons>
+  <p>Enrolamiento Solicitud de credito</p>
+</ion-toolbar>
+<ion-content >
+  <ion-row>
+    <ion-col sizeLg="1" sizeMd="0" sizeXs="0"></ion-col>
+    <ion-col sizeLg="10" sizeMd="12" sizeXs="12">
+      <div id="container" style="margin: 15px">
+        <div>
+          <h1>Autorizacion de Buro de Credito</h1>
+          <p style="color: gray;">Por este conducto autorizo expresamente a CREDITO PARA TI para que por conducto de sus funcionarios facultados lleve a 
+            cabo Investigaciones, sobre mi comportamiento crediticio. Así mismo, declaro que conozco la naturaleza y alcance de la información que se solicitará, 
+            del uso que CREDITO PARA TI hará de tal información y de que ésta podrá realizar consultas periódicas sobre mi historial o el de la empresa que represento, 
+            consintiendo que esta autorización se encuentre vigente por un período de 3 años contados a partir de su expedición y en todo caso durante el tiempo 
+            que se mantenga la relación jurídica.</p>
+        </div>
+        <form>
+          <ion-row style="margin-top: 3ch; margin-bottom: 70px;">
+            <ion-col sizeXl="4" sizeLg="6" sizeMd="6" sizeXs="12">
+              <ion-row>
+                <ion-col sizeLg="1" sizeMd="1" sizeXs="1">
+                  <ion-checkbox color="danger"></ion-checkbox>
+                </ion-col>
+                <ion-col sizeLg="5" sizeMd="5" sizeXs="5">
+                  <ion-label style="color: gray;">Si autorizo</ion-label>
+                </ion-col>
+                <ion-col sizeLg="1" sizeMd="1" sizeXs="1">
+                  <ion-checkbox color="danger"></ion-checkbox>
+                </ion-col>
+                <ion-col sizeLg="5" sizeMd="5" sizeXs="5">
+                  <ion-label style="color: gray;">No autorizo</ion-label>
+                </ion-col>
+              </ion-row>
+            </ion-col>
+          
+            <ion-col sizeXl="4" sizeLg="6" sizeMd="6" sizeXs="12">
+              <ion-item lines="full">
+                <ion-label position="floating" style="color: gray;">Confirmar NIP</ion-label>
+                <ion-input type="number"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+            <ion-fab-button (click)="guardarConsultaBuro()">
+              <img src="../../assets/img/save_white.svg" class="btnSave">
+            </ion-fab-button>
+          </ion-fab>
+        </form>
+      </div>
+    </ion-col>
+    <ion-col sizeLg="1" sizeMd="0" sizeXs="0"></ion-col>
+  </ion-row>
+</ion-content>

@@ -1,0 +1,158 @@
+<ion-toolbar color="medium">
+  <ion-buttons slot="start">
+    <ion-menu-button autoHide="false"></ion-menu-button>
+  </ion-buttons>
+  <p>Enrolamiento Solicitud de credito</p>
+</ion-toolbar>
+<ion-content>
+  <ion-row>
+    <ion-col sizeLg="1" sizeMd="0" sizeXs="0"></ion-col>
+    <ion-col sizeLg="10" sizeMd="12" sizeXs="12">
+      <div id="container">
+        <form>
+          <div class="divisorSolicitud">
+            <p>Datos del Inmueble</p>
+          </div>
+          <ion-row>
+            <ion-col sizeXl="4" sizeLg="6" sizeMd="6" sizeXs="12">
+              <ion-item style="margin-top: 7px;" lines="full">
+                <span class="labelForm">Uso del inmueble</span>
+                <ion-select class="inputPersonal" placeholder="Selecciona el uso" style="width: 100%;">
+                  <ion-select-option value="Y">Yucatan</ion-select-option>
+                </ion-select>
+              </ion-item>
+            </ion-col>
+            <ion-col sizeXl="4" sizeLg="6" sizeMd="6" sizeXs="12">
+              <ion-item style="margin-top: 7px;" lines="full">
+                <span class="labelForm">Tipo de Inmueble</span>
+                <ion-select class="inputPersonal" placeholder="Selecciona el tipo" style="width: 100%;">
+                  <ion-select-option value="N">Nuevo</ion-select-option>
+                  <ion-select-option value="U">Usado</ion-select-option>
+                </ion-select>
+              </ion-item>
+            </ion-col>
+            <ion-col sizeXl="4" sizeLg="6" sizeMd="6" sizeXs="12">
+              <ion-item lines="full">
+                <ion-label position="floating" style="color: gray;">Valor estimado del inmueble</ion-label>
+                <ion-input type="text" required></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col sizeXl="4" sizeLg="6" sizeMd="6" sizeXs="12">
+              <ion-row style="margin: 0px; padding: 0px;">
+                <ion-col sizeLg="6" sizeMd="6" sizeXs="6">
+                  <ion-item lines="full">
+                    <ion-label position="floating" style="color: gray;">Superficie (m2) Terreno</ion-label>
+                    <ion-input type="text" required></ion-input>
+                  </ion-item>
+                </ion-col>
+                <ion-col sizeLg="6" sizeMd="6" sizeXs="6">
+                  <ion-item lines="full">
+                    <ion-label position="floating" style="color: gray;">(m2) de Construccion</ion-label>
+                    <ion-input type="text" required></ion-input>
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+            </ion-col>
+            <ion-col sizeXl="4" sizeLg="6" sizeMd="6" sizeXs="12">
+              <ion-row style="margin: 0px; padding: 0px;">
+                <ion-col sizeLg="6" sizeMd="6" sizeXs="6">
+                  <ion-item lines="full">
+                    <ion-label position="floating" style="color: gray;">Porcentaje de financiamiento</ion-label>
+                    <ion-input type="text" required></ion-input>
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+            </ion-col>
+          </ion-row>
+          <div class="divisorSolicitud">
+            <p>Datos del Vendedor</p>
+          </div>
+          <ion-row style="margin-bottom: 70px;">
+            <ion-col sizeXl="4" sizeLg="6" sizeMd="6" sizeXs="12">
+              <ion-item lines="full">
+                <ion-label position="floating" style="color: gray;">Apellido Paterno</ion-label>
+                <ion-input type="text" required></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col sizeXl="4" sizeLg="6" sizeMd="6" sizeXs="12">
+              <ion-item lines="full">
+                <ion-label position="floating" style="color: gray;">Apellido Materno</ion-label>
+                <ion-input type="text" required></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col sizeXl="4" sizeLg="6" sizeMd="6" sizeXs="12">
+              <ion-item lines="full">
+                <ion-label position="floating" style="color: gray;">Nombre</ion-label>
+                <ion-input type="text" required></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col sizeXl="4" sizeLg="6" sizeMd="6" sizeXs="12">
+              <ion-item lines="full">
+                <ion-label position="floating" style="color: gray;">Telefono de casa</ion-label>
+                <ion-input type="text" placeholder="XXX-XXX-XXXX" required></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col sizeXl="4" sizeLg="6" sizeMd="6" sizeXs="12">
+              <ion-item lines="full">
+                <ion-label position="floating" style="color: gray;">Calle y numero</ion-label>
+                <ion-input type="text" required></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col sizeXl="4" sizeLg="6" sizeMd="6" sizeXs="12">
+              <ion-row style="margin-top: 0px; padding-top: 0px;">
+                <ion-col size="6" style="margin-top: 0px; padding-top: 0px;">
+                  <ion-item lines="full">
+                    <ion-label position="floating" style="color: gray;">CP</ion-label>
+                    <ion-input type="text" required></ion-input>
+                  </ion-item>
+                </ion-col>
+                <ion-col size="6" style="margin: auto;">
+                  <img src="../../../assets/img/search.svg" width="50px" />
+                </ion-col>
+              </ion-row>
+            </ion-col>
+            <ion-col sizeXl="4" sizeLg="6" sizeMd="6" sizeXs="12">
+              <ion-item style="margin-top: 7px;" lines="full">
+                <span class="labelForm">Colonia</span>
+                <ion-select class="inputPersonal" placeholder="Seleccione la colonia" style="width: 100%;">
+                  <ion-select-option value="Y">Yucatan</ion-select-option>
+                </ion-select>
+              </ion-item>
+            </ion-col>
+            <ion-col sizeXl="4" sizeLg="6" sizeMd="6" sizeXs="12">
+              <ion-item style="margin-top: 7px;" lines="full">
+                <span class="labelForm">Ciudad</span>
+                <ion-select class="inputPersonal" placeholder="Seleccione la ciudad" style="width: 100%;">
+                  <ion-select-option value="Y">Yucatan</ion-select-option>
+                </ion-select>
+              </ion-item>
+            </ion-col>
+            <ion-col sizeXl="4" sizeLg="6" sizeMd="6" sizeXs="12">
+              <ion-item style="margin-top: 7px;" lines="full">
+                <span class="labelForm">Delegacion / Municipio</span>
+                <ion-select class="inputPersonal" placeholder="Seleccione la delegacion" style="width: 100%;">
+                  <ion-select-option value="Y">Yucatan</ion-select-option>
+                </ion-select>
+              </ion-item>
+            </ion-col>
+            <ion-col sizeXl="4" sizeLg="6" sizeMd="6" sizeXs="12">
+              <ion-item style="margin-top: 7px;" lines="full">
+                <span class="labelForm">Estado</span>
+                <ion-select class="inputPersonal" placeholder="Seleccione el estado" style="width: 100%;">
+                  <ion-select-option value="Y">Yucatan</ion-select-option>
+                </ion-select>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+            <ion-fab-button (click)="guardarInmueble()">
+              <img src="../../assets/img/save_white.svg" class="btnSave">
+            </ion-fab-button>
+          </ion-fab>
+        </form>
+      </div>
+    </ion-col>
+    <ion-col sizeLg="1" sizeMd="0" sizeXs="0">
+    </ion-col>
+  </ion-row>
+</ion-content>
