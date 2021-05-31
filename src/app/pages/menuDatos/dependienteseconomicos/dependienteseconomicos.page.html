@@ -1,0 +1,80 @@
+<ion-toolbar color="medium">
+  <ion-buttons slot="start">
+    <ion-menu-button autoHide="false"></ion-menu-button>
+  </ion-buttons>
+  <p>Enrolamiento Solicitud de credito</p>
+</ion-toolbar>
+<ion-content>
+  <ion-row>
+    <ion-col sizeLg="1" sizeMd="0" sizeXs="0"></ion-col>
+    <ion-col sizeLg="10" sizeMd="12" sizeXs="12">
+      <div id="container">
+        <form #formDependientesEconomicos="ngForm">
+          <div class="divisorSolicitud">
+            <p>Datos Personales - Dependientes economicos</p>
+          </div>
+          <ion-row>
+            <ion-col sizeXl="4" sizeLg="6" sizeMd="6" sizeXs="6">
+              <ion-item lines="full">
+                <ion-label position="floating" style="color: gray;">Edad</ion-label>
+                <ion-input name="edad" [(ngModel)]="dependiente.edad" type="number" required></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col sizeXl="4" sizeLg="6" sizeMd="6" sizeXs="12">
+              <ion-item style="margin-top: 7px;" lines="full">
+                <span class="labelForm">Parentesco</span>
+                <ion-select name="parentesco" [(ngModel)]="dependiente.idParentesco" class="inputPersonal"
+                  placeholder="Selecciona el parentesco" style="width: 100%;">
+                  <ion-select-option *ngFor="let item of parentescoList" value="{{item.id}}">{{item.text}}
+                  </ion-select-option>
+                </ion-select>
+              </ion-item>
+            </ion-col>
+            <ion-col sizeXl="3" sizeLg="5" sizeMd="5" sizeXs="10">
+              <ion-item style="margin-top: 7px;" lines="full">
+                <span class="labelForm">Ocupacion</span>
+                <ion-select name="ocupacion" [(ngModel)]="dependiente.idOcupacion" class="inputPersonal"
+                  placeholder="Selecciona la ocupacion" style="width: 100%;">
+                  <ion-select-option *ngFor="let item of ocupacionList" value="{{item.id}}">{{item.text}}
+                  </ion-select-option>
+                </ion-select>
+              </ion-item>
+            </ion-col>
+            <ion-col sizeXl="1" sizeLg="1" sizeMd="1" sizeXs="2" style="margin-top: 7px;">
+              <div (click)="addItem()" style="background-color: black; width: 40px; height: 40px; margin: auto;">
+                <img src="../../../assets/img/add_white.svg" width="40px" />
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row style="margin-bottom: 70px;">
+            <ion-col sizeXl="4" sizeLg="3" sizeMd="3" sizeXs="0"></ion-col>
+            <ion-col sizeXl="4" sizeLg="6" sizeMd="6" sizeXs="12">
+              <ion-list>
+                <ion-item *ngFor="let item of itemList">
+                  <h2>{{item.idDependiente}}.-</h2>
+                  <ion-label style="margin-left: 10px;">
+                    <h3>{{item.edad}} años</h3>
+                    <p>{{item.txtParentesco}}</p>
+                  </ion-label>
+                  <ion-label>
+                    {{item.txtOcupacion}}
+                  </ion-label>
+                  <img src="../../../assets/img/editar.svg" width="30px" />
+                  <img src="../../../assets/img/delete.svg" (click)="deleteItem(item)" width="30px"
+                    style="margin-left: 8px;" />
+                </ion-item>
+              </ion-list>
+            </ion-col>
+          </ion-row>
+          <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+            <ion-fab-button (click)="guardarAdicionales()">
+              <img src="../../assets/img/save_white.svg" class="btnSave">
+            </ion-fab-button>
+          </ion-fab>
+        </form>
+      </div>
+    </ion-col>
+    <ion-col sizeLg="1" sizeMd="0" sizeXs="0">
+    </ion-col>
+  </ion-row>
+</ion-content>

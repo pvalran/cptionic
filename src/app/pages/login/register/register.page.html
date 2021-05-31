@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar color="medium">
+    <h2 style="text-align: center;">Registrar nuevo usuario</h2>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <br />
+  <ion-row>
+    <ion-col sizeLg="2" sizeMd="0" sizeXs="0"></ion-col>
+    <ion-col sizeLg="2" sizeMd="4" sizeXs="8" style="padding: 3ch;">
+      <img src="../../../assets/img/creditoparati.png" />
+    </ion-col>
+    <ion-col sizeLg="10" sizeMd="8" sizeXs="4"></ion-col>
+  </ion-row>
+  <form #formRegister="ngForm" (ngSubmit)="registrarUsuario()" style="margin: 15px;">
+    <ion-row>
+      <ion-col sizeLg="2" sizeMd="0" sizeXs="0"></ion-col>
+      <ion-col sizeLg="8" sizeMd="12" sizeXs="12">
+        <ion-row>
+          <ion-col sizeLg="6" sizeMd="6" sizeXs="12">
+            <ion-item lines="full">
+              <ion-label position="floating" style="color: gray;">Nombre de usuario</ion-label>
+              <ion-input type="text" name="userName" [(ngModel)]="usuario.userName" required></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col sizeLg="6" sizeMd="6" sizeXs="12">
+            <ion-item lines="full">
+              <ion-label position="floating" style="color: gray;">Correo</ion-label>
+              <ion-input type="text" name="email" [(ngModel)]="usuario.email" required></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col sizeLg="6" sizeMd="6" sizeXs="12">
+            <ion-item lines="full">
+              <ion-label position="floating" style="color: gray;">Contraseña</ion-label>
+              <ion-input minlength="8" type="password" name="pass" [(ngModel)]="usuario.pass" required></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col sizeLg="6" sizeMd="6" sizeXs="12">
+            <ion-item lines="full">
+              <ion-label position="floating" style="color: gray;">Confirmar contraseña</ion-label>
+              <ion-input minlength="8" type="password" name="passConfirmed" [(ngModel)]="passConfirmed" required>
+              </ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col sizeLg="12" sizeMd="12" sizeXs="12">
+            <ion-label style="margin-left: 19px; font-size: 12px;">Utiliza ocho caracteres como mínimo</ion-label>
+          </ion-col>
+          <ion-col sizeLg="6" sizeMd="6" sizeXs="12"></ion-col>
+          <ion-col sizeLg="6" sizeMd="6" sizeXs="12" style="margin-top: 2ch; margin-bottom: 2ch;">
+            <ion-button type="submit" color="danger" expand="full" [disabled]="formRegister.invalid">Crear</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+      <ion-col sizeLg="2" sizeMd="0" sizeXs="0"></ion-col>
+    </ion-row>
+  </form>
+</ion-content>

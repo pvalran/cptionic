@@ -1,0 +1,110 @@
+<ion-toolbar color="medium">
+  <ion-buttons slot="start">
+    <ion-menu-button autoHide="false"></ion-menu-button>
+  </ion-buttons>
+  <p>Enrolamiento Solicitud de credito</p>
+</ion-toolbar>
+<ion-content>
+  <ion-row>
+    <ion-col sizeLg="1" sizeMd="0" sizeXs="0"></ion-col>
+    <ion-col sizeLg="10" sizeMd="12" sizeXs="12">
+      <div id="container">
+        <form #formReferenciaPersonales="ngForm">
+          <div class="divisorSolicitud">
+            <p>Datos Personales - Referencias personales</p>
+          </div>
+          <ion-row>
+            <ion-col sizeXl="12" sizeLg="12" sizeMd="12" sizeXs="12" style="margin-left: 15px;">
+              <ion-label>Capturar 2 referencia Familiares y 2 NO familiares</ion-label>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col sizeXl="4" sizeLg="6" sizeMd="6" sizeXs="12">
+              <ion-item style="margin-top: 7px;" lines="full">
+                <span class="labelForm">Tipo de referencia</span>
+                <ion-select name="idTipoReferencia" [(ngModel)]="referencia.idTipoReferencia" class="inputPersonal"
+                  placeholder="Selecciona el tipo de referencia" style="width: 100%;">
+                  <ion-select-option *ngFor="let item of tipoReferenciaList" value="{{item.id}}">{{item.text}}
+                  </ion-select-option>
+                </ion-select>
+              </ion-item>
+            </ion-col>
+            <ion-col sizeXl="4" sizeLg="6" sizeMd="6" sizeXs="12">
+              <ion-item lines="full">
+                <ion-label position="floating" style="color: gray;">Apellido Paterno</ion-label>
+                <ion-input name="apellidoPaterno" [(ngModel)]="referencia.apellidoPaterno" type="text" required>
+                </ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col sizeXl="4" sizeLg="6" sizeMd="6" sizeXs="12">
+              <ion-item lines="full">
+                <ion-label position="floating" style="color: gray;">Apellido Materno</ion-label>
+                <ion-input name="apellidoMaterno" [(ngModel)]="referencia.apellidoMaterno" type="text" required>
+                </ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col sizeXl="4" sizeLg="6" sizeMd="6" sizeXs="12">
+              <ion-item lines="full">
+                <ion-label position="floating" style="color: gray;">Nombre (sin abreviaturas)</ion-label>
+                <ion-input name="nombre" [(ngModel)]="referencia.nombre" type="text" required></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col sizeXl="4" sizeLg="6" sizeMd="6" sizeXs="12">
+              <ion-item lines="full">
+                <ion-label position="floating" style="color: gray;">Correo electronico</ion-label>
+                <ion-input name="email" [(ngModel)]="referencia.email" type="email" required></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col sizeXl="4" sizeLg="6" sizeMd="6" sizeXs="6">
+              <ion-item lines="full">
+                <ion-label position="floating" style="color: gray;">Telefono de casa</ion-label>
+                <ion-input name="telefonoCasa" [(ngModel)]="referencia.telefonoCasa" type="tel" required></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col sizeXl="0" sizeLg="0" sizeMd="0" sizeXs="6">
+            </ion-col>
+            <ion-col sizeXl="4" sizeLg="6" sizeMd="6" sizeXs="6">
+              <ion-item lines="full">
+                <ion-label position="floating" style="color: gray;">Celular</ion-label>
+                <ion-input name="celular" [(ngModel)]="referencia.celular" type="tel" required></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col sizeXl="1" sizeLg="1" sizeMd="1" sizeXs="2" style="margin-top: 7px;">
+              <div (click)="addItem()" style="background-color: black; width: 40px; height: 40px; margin: auto;">
+                <img src="../../../assets/img/add_white.svg" width="40px" />
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row style="margin-bottom: 70px;">
+            <ion-col sizeXl="4" sizeLg="3" sizeMd="3" sizeXs="0"></ion-col>
+            <ion-col sizeXl="4" sizeLg="6" sizeMd="6" sizeXs="12">
+              <ion-list>
+                <ion-item *ngFor="let item of itemList">
+                  <h2>{{item.idReferencia}}.-</h2>
+                  <ion-label style="margin-left: 10px;">
+                    <h3>Referencia {{item.txtTipoReferencia}}</h3>
+                    <p>{{item.nombre}} {{item.apellidoPaterno}} {{item.apellidoMaterno}}</p>
+                    <p>{{item.email}}</p>
+                    <p>{{item.telefonoCasa}}</p>
+                    <p>{{item.celular}}</p>
+                  </ion-label>
+                  <div style="margin-top: auto; margin-bottom: 10px;">
+                    <img src="../../../assets/img/editar.svg" width="30px" />
+                    <img src="../../../assets/img/delete.svg" (click)="deleteItem(item)" width="30px" style="margin-left: 8px;" />
+                  </div>
+                </ion-item>
+              </ion-list>
+            </ion-col>
+          </ion-row>
+          <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+            <ion-fab-button (click)="guardarReferencias()">
+              <img src="../../assets/img/save_white.svg" class="btnSave">
+            </ion-fab-button>
+          </ion-fab>
+        </form>
+      </div>
+    </ion-col>
+    <ion-col sizeLg="1" sizeMd="0" sizeXs="0">
+    </ion-col>
+  </ion-row>
+</ion-content>
