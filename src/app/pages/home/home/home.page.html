@@ -14,11 +14,11 @@
           <p style="color: gray;">Expreso que soy cliente de CREDITO PARA Ti y que estoy iniciando un proceso de
             solicitud de credito hipotecario.</p>
         </div>
-        <form>
+        <form #formDeclaracionInicial="ngForm">
           <ion-row>
             <ion-col sizeLg="5" sizeMd="5" sizeXs="2"></ion-col>
             <ion-col sizeLg="1" sizeMd="1" sizeXs="2">
-              <ion-checkbox color="danger"></ion-checkbox>
+              <ion-checkbox color="danger"  name="aceptDelcaracion" [(ngModel)]="aceptDelcaracion"></ion-checkbox>
             </ion-col>
             <ion-col sizeLg="6" sizeMd="6" sizeXs="8">
               <ion-label style="color: gray;">De acuerdo</ion-label>
@@ -28,26 +28,26 @@
             <ion-col sizeXl="4" sizeLg="6" sizeMd="6" sizeXs="12">
               <ion-item lines="full">
                 <ion-label position="floating" style="color: gray;">Email</ion-label>
-                <ion-input type="email" required></ion-input>
+                <ion-input type="email" name="email" [(ngModel)]="declaracion.email" required></ion-input>
               </ion-item>
             </ion-col>
             <ion-col sizeXl="4" sizeLg="6" sizeMd="6" sizeXs="12">
               <ion-item lines="full">
                 <ion-label position="floating" style="color: gray;">confirmar email</ion-label>
-                <ion-input type="email" required></ion-input>
+                <ion-input type="email" name="emailConfirm" [(ngModel)]="emailConfirm" required></ion-input>
               </ion-item>
             </ion-col>
             <ion-col sizeXl="4" sizeLg="6" sizeMd="6" sizeXs="12">
               <ion-item lines="full">
                 <ion-label position="floating" style="color: gray;">Numero celular</ion-label>
-                <ion-input type="text" required></ion-input>
+                <ion-input type="tel"  name="celular" [(ngModel)]="declaracion.celular" required></ion-input>
               </ion-item>
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col sizeXl="5" sizeLg="4" sizeMd="4" sizeXs="2"></ion-col>
             <ion-col sizeXl="2" sizeLg="4" sizeMd="4" sizeXs="8" style="margin-top: 2ch; margin-bottom: 2ch;">
-              <ion-button type="submit" color="danger" expand="full">Enviar NIP</ion-button>
+              <ion-button type="submit" name="btnEnviarNip" [disabled]="formDeclaracionInicial.invalid" color="danger" (click)="enviarNIP()" expand="full">Enviar NIP</ion-button>
             </ion-col>
           </ion-row>
           <ion-row style="margin-bottom: 70px;">
@@ -59,7 +59,7 @@
             </ion-col>
           </ion-row>
           <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-            <ion-fab-button (click)="aceptarDeclaracionInicial()">
+            <ion-fab-button (click)="guardarDeclaracionInicial()">
               <img src="../../assets/img/save_white.svg" class="btnSave">
             </ion-fab-button>
           </ion-fab>

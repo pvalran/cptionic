@@ -1,5 +1,6 @@
+import { AlertController } from '@ionic/angular';
 import { Token } from 'src/app/models/Token';
-import { SelectDTO } from '../models/SelectDTO';
+import { ISelectDTO } from '../interfaces/ISelectDTO';
 
 export class Utilidades {
 
@@ -44,7 +45,7 @@ export class Utilidades {
         return new Token(localStorage.getItem('login'));
     }
 
-    static getTextSelectById(listSearch: SelectDTO[], idSearch: number): string {
+    static getTextSelectById(listSearch: ISelectDTO[], idSearch: number): string {
         let resultSearch: string = "";
 
         listSearch.forEach(item => {
@@ -54,6 +55,24 @@ export class Utilidades {
         });
 
         return resultSearch;
+    }
+
+    static async presentAlert(header: string, mensaje: string) {
+        let alertController: AlertController = new AlertController();
+
+        const alert = await alertController.create({
+            cssClass: 'my-custom-class',
+            header: header,
+            message: mensaje,
+            buttons: [
+                {
+                    text: 'Ok',
+                    role: 'Ok',
+                    cssClass: 'secondary',
+                }]
+        });
+
+        await alert.present();
     }
 
 }

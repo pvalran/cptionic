@@ -38,18 +38,20 @@ export class LoginPage implements OnInit {
   }
 
   iniciarSesion() {
-    this.service.postPetition(this.urlLogin, this.login).then(data => {
-      let token: Token = new Token(data.data);
-      sessionStorage.setItem('login', JSON.stringify(token));
-      this.lLoginIsValid = true;
-      this.presentAlert("", data.message);
-    })
-      .catch(error => {
-        this.presentAlert("", error.error.message);
-        console.log(error.status);
-        console.log(error.error);
-        console.log(error.headers);
-      });
+    this.lLoginIsValid = true;
+    this.presentAlert("", "EXITO");
+   // this.service.postPetition(this.urlLogin, this.login).then(data => {
+    //  let token: Token = new Token(data.data);
+    //  sessionStorage.setItem('login', JSON.stringify(token));
+    //  this.lLoginIsValid = true;
+    //  this.presentAlert("", data.message);
+   // })
+   //   .catch(error => {
+   //     this.presentAlert("", error.error.message);
+    //    console.log(error.status);
+   //     console.log(error.error);
+   //     console.log(error.headers);
+   //   });
   }
 
   registrarNuevoUsuario() {

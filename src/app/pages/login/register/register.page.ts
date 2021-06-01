@@ -20,7 +20,6 @@ export class RegisterPage implements OnInit {
   };
 
   passConfirmed: string;
-  lCreateCount: boolean = false;
   urlAddUser: string = "http://64.225.45.9:90/credencial/addUser";
 
   constructor(
@@ -33,7 +32,6 @@ export class RegisterPage implements OnInit {
   }
 
   ngOnDestroy() {
-    this.lCreateCount = false;
     this.usuario = {
       userName: '',
       email: '',
@@ -47,11 +45,10 @@ export class RegisterPage implements OnInit {
 
     if (this.validaUsuario()) {
       this.service.postPetition(this.urlAddUser, this.usuario).then(data => {
-        this.lCreateCount = true;
         this.presentAlert("", data.message);
       })
         .catch(error => {
-          this.presentAlert("", error.error.message);
+          Utilidades.presentAlert("", error.error.message);
           console.log(error.status);
           console.log(error.error);
           console.log(error.headers);
@@ -62,22 +59,22 @@ export class RegisterPage implements OnInit {
   validaUsuario(): boolean {
 
     if (Utilidades.isEmpty(this.usuario.userName)) {
-      this.presentAlert("Advertencia", "Ingrese un nombre de usuario");
+      Utilidades.presentAlert("Advertencia", "Ingrese un nombre de usuario");
       return false;
     }
 
     if (Utilidades.isValidEmail(this.usuario.email)) {
-      this.presentAlert("Advertencia", "Ingrese un email valido");
+      Utilidades.presentAlert("Advertencia", "Ingrese un email valido");
       return false;
     }
 
     if (Utilidades.isEmpty(this.usuario.pass)) {
-      this.presentAlert("Advertencia", "Ingrese una contraseña");
+      Utilidades.presentAlert("Advertencia", "Ingrese una contraseña");
       return false;
     }
 
     if (this.usuario.pass != this.passConfirmed) {
-      this.presentAlert("Advertencia", "La contraseña no coincide");
+      Utilidades.presentAlert("Advertencia", "La contraseña no coincide");
       return false;
     }
 
@@ -95,9 +92,7 @@ export class RegisterPage implements OnInit {
           role: 'Ok',
           cssClass: 'secondary',
           handler: (blah) => {
-            if (this.lCreateCount) {
-              this.router.navigate(['/login']);
-            }
+            this.router.navigate(['/login']);
           }
         }]
     });

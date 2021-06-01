@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
+import { ISelectDTO } from 'src/app/interfaces/ISelectDTO';
 
 import { ReferenciaPersonal } from 'src/app/models/ReferenciaPersonal';
-import { SelectDTO } from 'src/app/models/SelectDTO';
 import { Utilidades } from 'src/app/service/utilidades';
 
 @Component({
@@ -15,7 +15,7 @@ export class ReferenciasPage implements OnInit {
 
   itemList: ReferenciaPersonal[] = [];
 
-  tipoReferenciaList: SelectDTO[] = [
+  tipoReferenciaList: ISelectDTO[] = [
     {
       id: 1,
       text: 'Familiar'
@@ -33,9 +33,9 @@ export class ReferenciasPage implements OnInit {
   constructor(private router: Router, private alertController: AlertController,) { }
 
   ngOnInit() {
-    if (!Utilidades.validSession()) {
-      this.router.navigate(['/login']);
-    }
+    //if (!Utilidades.validSession()) {
+    //  this.router.navigate(['/login']);
+    //}
   }
 
   guardarReferencias() {
@@ -43,14 +43,14 @@ export class ReferenciasPage implements OnInit {
       this.router.navigate(['/menu'])
     }
     else {
-      this.presentAlert("Advertencia", "Debe ingresar 2 referencias familiares y 2 no familiares");
+      Utilidades.presentAlert("Advertencia", "Debe ingresar 2 referencias familiares y 2 no familiares");
     }
   }
 
   addItem() {
     if (this.validaFormulario()) {
       let referenciaAdd: ReferenciaPersonal = new ReferenciaPersonal();
-      debugger
+
       referenciaAdd.idReferencia = this.idReferencia;
       referenciaAdd.idTipoReferencia = this.referencia.idTipoReferencia;
       referenciaAdd.apellidoPaterno = this.referencia.apellidoPaterno;
@@ -89,55 +89,41 @@ export class ReferenciasPage implements OnInit {
   validaFormulario(): boolean {
 
     if (Utilidades.isValidNumber(this.referencia.idTipoReferencia)) {
-      this.presentAlert("Advertencia", "Ingrese un tipo de referencia");
+      Utilidades.presentAlert("Advertencia", "Ingrese un tipo de referencia");
       return false;
     }
 
     if (Utilidades.isEmpty(this.referencia.apellidoPaterno)) {
-      this.presentAlert("Advertencia", "Ingrese el apellido paterno");
+      Utilidades.presentAlert("Advertencia", "Ingrese el apellido paterno");
       return false;
     }
 
     if (Utilidades.isEmpty(this.referencia.apellidoMaterno)) {
-      this.presentAlert("Advertencia", "Ingrese el apellido materno");
+      Utilidades.presentAlert("Advertencia", "Ingrese el apellido materno");
       return false;
     }
 
     if (Utilidades.isEmpty(this.referencia.nombre)) {
-      this.presentAlert("Advertencia", "Ingrese el nombre");
+      Utilidades.presentAlert("Advertencia", "Ingrese el nombre");
       return false;
     }
 
     if (Utilidades.isValidEmail(this.referencia.email)) {
-      this.presentAlert("Advertencia", "Ingrese un email valido");
+      Utilidades.presentAlert("Advertencia", "Ingrese un email valido");
       return false;
     }
 
     if (Utilidades.isEmpty(this.referencia.telefonoCasa)) {
-      this.presentAlert("Advertencia", "Ingrese el telefono de casa");
+      Utilidades.presentAlert("Advertencia", "Ingrese el telefono de casa");
       return false;
     }
 
     if (Utilidades.isEmpty(this.referencia.celular)) {
-      this.presentAlert("Advertencia", "Ingrese el celular");
+      Utilidades.presentAlert("Advertencia", "Ingrese el celular");
       return false;
     }
 
     return true;
   }
 
-  async presentAlert(header: string, mensaje: string) {
-    const alert = await this.alertController.create({
-      cssClass: 'my-custom-class',
-      header: header,
-      message: mensaje,
-      buttons: [
-        {
-          text: 'Ok',
-          role: 'Ok',
-          cssClass: 'secondary',
-        }]
-    });
-    await alert.present();
-  }
 }

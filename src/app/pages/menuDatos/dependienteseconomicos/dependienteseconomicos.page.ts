@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
+import { ISelectDTO } from 'src/app/interfaces/ISelectDTO';
 
 import { DependientesEconomicos } from 'src/app/models/DependientesEconomicos';
-import { SelectDTO } from 'src/app/models/SelectDTO';
 import { Utilidades } from 'src/app/service/utilidades'
 
 @Component({
@@ -15,7 +15,7 @@ export class DependienteseconomicosPage implements OnInit {
 
   itemList: DependientesEconomicos[] = [];
 
-  parentescoList: SelectDTO[] = [
+  parentescoList: ISelectDTO[] = [
     {
       id: 1,
       text: 'Esposo(a)'
@@ -26,7 +26,7 @@ export class DependienteseconomicosPage implements OnInit {
     }
   ];
 
-  ocupacionList: SelectDTO[] = [
+  ocupacionList: ISelectDTO[] = [
     {
       id: 1,
       text: 'Ama de casa'
@@ -48,9 +48,9 @@ export class DependienteseconomicosPage implements OnInit {
   constructor(private router: Router, private alertController: AlertController,) { }
 
   ngOnInit() {
-    if (!Utilidades.validSession()) {
-      this.router.navigate(['/login']);
-    }
+    //if (!Utilidades.validSession()) {
+    //  this.router.navigate(['/login']);
+    //}
   }
 
   guardarAdicionales() {
@@ -95,37 +95,22 @@ export class DependienteseconomicosPage implements OnInit {
 
   validaFormulario(): boolean {
 
-    if (this.dependiente.edad <= 0 || this.dependiente.edad === undefined) {
-      this.presentAlert("Advertencia", "Ingrese una edad valida");
+    if (Utilidades.isValidNumber(this.dependiente.edad)) {
+      Utilidades.presentAlert("Advertencia", "Ingrese una edad valida");
       return false;
     }
 
-    if (this.dependiente.idParentesco <= 0 || this.dependiente.idParentesco === undefined) {
-      this.presentAlert("Advertencia", "Seleccione un parentesco");
+    if (Utilidades.isValidNumber(this.dependiente.idParentesco)) {
+      Utilidades.presentAlert("Advertencia", "Seleccione un parentesco");
       return false;
     }
 
-    if (this.dependiente.idOcupacion <= 0 || this.dependiente.idOcupacion === undefined) {
-      this.presentAlert("Advertencia", "Seleccione una ocupacion");
+    if (Utilidades.isValidNumber(this.dependiente.idOcupacion)) {
+      Utilidades.presentAlert("Advertencia", "Seleccione una ocupacion");
       return false;
     }
 
     return true;
-  }
-
-  async presentAlert(header: string, mensaje: string) {
-    const alert = await this.alertController.create({
-      cssClass: 'my-custom-class',
-      header: header,
-      message: mensaje,
-      buttons: [
-        {
-          text: 'Ok',
-          role: 'Ok',
-          cssClass: 'secondary',
-        }]
-    });
-    await alert.present();
   }
 
 }
