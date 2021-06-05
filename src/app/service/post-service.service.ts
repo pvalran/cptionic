@@ -8,18 +8,22 @@ import { IObjRequest } from '../interfaces/IObjRequest';
 
 export class PostServiceService {
 
-  httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  };
-
   constructor(private httpClient: HttpClient) { }
 
   getPetition(url: string) {
     return this.httpClient.get<IObjRequest>(url);
   }
 
-  postPetition(url: string, data: any) {
-    return this.httpClient.post<IObjRequest>(url, data, this.httpOptions).toPromise();
+  postPetition(url: string, data: any, token: string = "") {
+    //Establecemos cabeceras
+    let httpOptions: HttpHeaders = new HttpHeaders();
+    httpOptions.set('Content-Type', 'application/json');
+
+    if (token != "") {
+      httpOptions.set('Authorization', token);
+    }
+
+    return this.httpClient.post<IObjRequest>(url, data, { headers: httpOptions }).toPromise();
   }
 
 }

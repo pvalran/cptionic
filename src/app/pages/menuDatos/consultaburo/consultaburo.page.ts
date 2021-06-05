@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-laborales',
-  templateUrl: './laborales.page.html',
-  styleUrls: ['./laborales.page.scss'],
+  selector: 'app-consultaburo',
+  templateUrl: './consultaburo.page.html',
+  styleUrls: ['./consultaburo.page.scss'],
 })
-export class LaboralesPage implements OnInit {
+export class ConsultaburoPage implements OnInit {
 
   constructor(private router: Router) { }
 
@@ -14,7 +14,8 @@ export class LaboralesPage implements OnInit {
     this.router.navigate(['/home']);
   }
 
-  guardarInformacionLaboral(){
+  guardarConsultaBuro(){
     this.router.navigate(['/menu'])
   }
+
 }

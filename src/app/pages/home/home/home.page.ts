@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { DeclaracionInicial } from 'src/app/models/DeclaracionInicial';
-import { Utilidades } from 'src/app/service/utilidades'
-import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -11,46 +8,50 @@ import { AlertController } from '@ionic/angular';
 })
 export class HomePage implements OnInit {
 
-  emailConfirm: string;
-  aceptDelcaracion: boolean = false;
-  validCaptureNIP = false;
-  declaracion: DeclaracionInicial = new DeclaracionInicial();
+  menuProductos = [
+    {
+      id: 1,
+      text: 'Fovissste Tradicional Individual'
+    },
+    {
+      id: 2,
+      text: 'Fovissste Tradicional Mancomunado'
+    },
+    {
+      id: 3,
+      text: 'Pensionados'
+    },
+    {
+      id: 4,
+      text: 'Conyugal infonavit Fovissste'
+    },
+    {
+      id: 5,
+      text: 'Individual Infonavit Fovissste'
+    },
+    {
+      id: 6,
+      text: 'Fovissste Tradicional Mancomunado'
+    },
+    {
+      id: 7,
+      text: 'Fovissste para todos'
+    },
+    {
+      id: 8,
+      text: 'Creditos Bancarios'
+    }
+  ];
 
-  constructor(private router: Router, private alertController: AlertController) { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
-   // if (!Utilidades.validSession()) {
-   //   this.router.navigate(['/login']);
-   // }
+    // if (!Utilidades.validSession()) {
+    //   this.router.navigate(['/login']);
+    // }
   }
 
-  enviarNIP() {
-    debugger
-    if (this.aceptDelcaracion) {
-      if (this.validaFormulario()) {
-        console.log("Solicitar PIN");
-      }
-    } else {
-      Utilidades.presentAlert("", "Debe aceptar la declaracion inicial");
-    }
-  }
-
-  validaFormulario(): boolean {
-    if (Utilidades.isValidEmail(this.declaracion.email)) {
-      Utilidades.presentAlert("Advertencia", "Agregue un email valido")
-      return false;
-    }
-
-    if (this.declaracion.email != this.emailConfirm) {
-      Utilidades.presentAlert("Advertencia", "Los correos no coinciden")
-      return false;
-    }
-    return true;
-  }
-
-  guardarDeclaracionInicial() {
-    //if (this.validCaptureNIP) {
-      this.router.navigate(['/captureid']);
-    //}
+  addProduct(item) {
+    this.router.navigate(['/captureid']);
   }
 }

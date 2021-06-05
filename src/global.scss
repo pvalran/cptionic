@@ -24,3 +24,38 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+.divisorSolicitud{
+    background-color: #eb445a;
+    height: 2ch;
+    width: 100%;
+    color: #ffffff;
+    text-align: center;
+}
+
+.labelForm{
+    font-size: small;
+    color: gray;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+.btnSave{
+    margin: 1ch;
+}
+
+.inputPersonal{
+    position: absolute;
+    top: 9px;
+}
+
+.inputPersonalCheck{
+    position: absolute;
+    top: -15px;
+}
+
+.lblCheckPersonal{
+    position: absolute;
+    top: 2px;
+}

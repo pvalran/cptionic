@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AlertController } from '@ionic/angular';
 import { PostServiceService } from 'src/app/service/post-service.service';
 import { Utilidades } from 'src/app/service/utilidades';
 
@@ -20,11 +19,10 @@ export class RegisterPage implements OnInit {
   };
 
   passConfirmed: string;
-  urlAddUser: string = "http://64.225.45.9:90/credencial/addUser";
+  urlAddUser: string = "https://64.225.45.9:90/credencial/addUser";
 
   constructor(
     private router: Router,
-    private alertController: AlertController,
     private service: PostServiceService
   ) { }
 
@@ -45,7 +43,10 @@ export class RegisterPage implements OnInit {
 
     if (this.validaUsuario()) {
       this.service.postPetition(this.urlAddUser, this.usuario).then(data => {
-        this.presentAlert("", data.message);
+        Utilidades.presentAlert("", data.message);
+        if (data.success) {
+          this.router.navigate(['/login']);
+        }
       })
         .catch(error => {
           Utilidades.presentAlert("", error.error.message);
@@ -79,23 +80,5 @@ export class RegisterPage implements OnInit {
     }
 
     return true;
-  }
-
-  async presentAlert(header: string, mensaje: string) {
-    const alert = await this.alertController.create({
-      cssClass: 'my-custom-class',
-      header: header,
-      message: mensaje,
-      buttons: [
-        {
-          text: 'Ok',
-          role: 'Ok',
-          cssClass: 'secondary',
-          handler: (blah) => {
-            this.router.navigate(['/login']);
-          }
-        }]
-    });
-    await alert.present();
   }
 }

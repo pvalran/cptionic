@@ -11,6 +11,7 @@ export class AdicionalcuestionariomedicoPage implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit() {
+    this.router.navigate(['/home']);
   }
 
   guardarAdicionalesCuestionarioMedico(){

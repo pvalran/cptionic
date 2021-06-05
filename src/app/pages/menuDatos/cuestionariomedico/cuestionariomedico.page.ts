@@ -11,6 +11,7 @@ export class CuestionariomedicoPage implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit() {
+    this.router.navigate(['/home']);
   }
 
   guardarCuestionarioMedico(){

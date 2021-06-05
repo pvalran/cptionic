@@ -48,6 +48,7 @@ export class DependienteseconomicosPage implements OnInit {
   constructor(private router: Router, private alertController: AlertController,) { }
 
   ngOnInit() {
+    this.router.navigate(['/home']);
     //if (!Utilidades.validSession()) {
     //  this.router.navigate(['/login']);
     //}

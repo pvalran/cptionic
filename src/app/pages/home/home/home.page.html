@@ -8,62 +8,21 @@
   <ion-row>
     <ion-col sizeLg="1" sizeMd="0" sizeXs="0"></ion-col>
     <ion-col sizeLg="10" sizeMd="12" sizeXs="12">
-      <div id="container" style="margin: 15px">
-        <div class="contentCenter">
-          <h1>Declaracion inicial</h1>
-          <p style="color: gray;">Expreso que soy cliente de CREDITO PARA Ti y que estoy iniciando un proceso de
-            solicitud de credito hipotecario.</p>
-        </div>
-        <form #formDeclaracionInicial="ngForm">
-          <ion-row>
-            <ion-col sizeLg="5" sizeMd="5" sizeXs="2"></ion-col>
-            <ion-col sizeLg="1" sizeMd="1" sizeXs="2">
-              <ion-checkbox color="danger"  name="aceptDelcaracion" [(ngModel)]="aceptDelcaracion"></ion-checkbox>
+      <div id="container" style="margin-left: 15px; margin-right: 15px;">
+        <h2 style="color: #134279; text-align: center; font-weight: 700;">Menu de productos</h2>
+        <hr style="height:1px;border-width:0;color:#77D353;background-color:#77D353">
+        <ion-list>
+          <ion-row *ngFor="let item of menuProductos" style="margin: 10px;">
+            <ion-col size="10">
+              <ion-label style="color: #2898BF; font-weight: bold;">{{item.text}}</ion-label>
             </ion-col>
-            <ion-col sizeLg="6" sizeMd="6" sizeXs="8">
-              <ion-label style="color: gray;">De acuerdo</ion-label>
+            <ion-col>
+              <div (click)="addProduct(item)" style="background-color: #2898BF; width: 30px; height: 30px; margin: auto;">
+                <img src="../../../assets/img/add_white.svg" width="40px" />
+              </div>
             </ion-col>
           </ion-row>
-          <ion-row>
-            <ion-col sizeXl="4" sizeLg="6" sizeMd="6" sizeXs="12">
-              <ion-item lines="full">
-                <ion-label position="floating" style="color: gray;">Email</ion-label>
-                <ion-input type="email" name="email" [(ngModel)]="declaracion.email" required></ion-input>
-              </ion-item>
-            </ion-col>
-            <ion-col sizeXl="4" sizeLg="6" sizeMd="6" sizeXs="12">
-              <ion-item lines="full">
-                <ion-label position="floating" style="color: gray;">confirmar email</ion-label>
-                <ion-input type="email" name="emailConfirm" [(ngModel)]="emailConfirm" required></ion-input>
-              </ion-item>
-            </ion-col>
-            <ion-col sizeXl="4" sizeLg="6" sizeMd="6" sizeXs="12">
-              <ion-item lines="full">
-                <ion-label position="floating" style="color: gray;">Numero celular</ion-label>
-                <ion-input type="tel"  name="celular" [(ngModel)]="declaracion.celular" required></ion-input>
-              </ion-item>
-            </ion-col>
-          </ion-row>
-          <ion-row>
-            <ion-col sizeXl="5" sizeLg="4" sizeMd="4" sizeXs="2"></ion-col>
-            <ion-col sizeXl="2" sizeLg="4" sizeMd="4" sizeXs="8" style="margin-top: 2ch; margin-bottom: 2ch;">
-              <ion-button type="submit" name="btnEnviarNip" [disabled]="formDeclaracionInicial.invalid" color="danger" (click)="enviarNIP()" expand="full">Enviar NIP</ion-button>
-            </ion-col>
-          </ion-row>
-          <ion-row style="margin-bottom: 70px;">
-            <ion-col sizeXl="4" sizeLg="6" sizeMd="6" sizeXs="12">
-              <ion-item lines="full">
-                <ion-label position="floating" style="color: gray;">Capturar NIP</ion-label>
-                <ion-input type="number"></ion-input>
-              </ion-item>
-            </ion-col>
-          </ion-row>
-          <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-            <ion-fab-button (click)="guardarDeclaracionInicial()">
-              <img src="../../assets/img/save_white.svg" class="btnSave">
-            </ion-fab-button>
-          </ion-fab>
-        </form>
+        </ion-list>
       </div>
     </ion-col>
     <ion-col sizeLg="1" sizeMd="0" sizeXs="0"></ion-col>

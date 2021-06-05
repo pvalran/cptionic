@@ -11,6 +11,7 @@ export class InmueblePage implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit() {
+    this.router.navigate(['/home']);
   }
 
   guardarInmueble(){

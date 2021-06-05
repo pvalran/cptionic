@@ -11,6 +11,7 @@ export class ConyugePage implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit() {
+    this.router.navigate(['/home']);
   }
 
   guardarConyuge(){

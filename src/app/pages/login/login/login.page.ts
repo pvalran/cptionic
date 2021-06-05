@@ -3,13 +3,14 @@ import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { Token } from 'src/app/models/Token';
 import { PostServiceService } from 'src/app/service/post-service.service';
+import { Utilidades } from 'src/app/service/utilidades';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
-
+//BORRAR ALERT CONTROLER
 export class LoginPage implements OnInit {
 
   login = {
@@ -17,8 +18,7 @@ export class LoginPage implements OnInit {
     password: ''
   };
 
-  lLoginIsValid: boolean = false;
-  urlLogin: string = "http://64.225.45.9:90/credencial/login";
+  urlLogin: string = "https://64.225.45.9:90/credencial/login";
 
   constructor(
     private router: Router,
@@ -30,7 +30,6 @@ export class LoginPage implements OnInit {
   }
 
   ngOnDestroy() {
-    this.lLoginIsValid = false;
     this.login = {
       user: '',
       password: ''
@@ -38,44 +37,23 @@ export class LoginPage implements OnInit {
   }
 
   iniciarSesion() {
-    this.lLoginIsValid = true;
-    this.presentAlert("", "EXITO");
-   // this.service.postPetition(this.urlLogin, this.login).then(data => {
-    //  let token: Token = new Token(data.data);
-    //  sessionStorage.setItem('login', JSON.stringify(token));
-    //  this.lLoginIsValid = true;
-    //  this.presentAlert("", data.message);
-   // })
-   //   .catch(error => {
-   //     this.presentAlert("", error.error.message);
-    //    console.log(error.status);
-   //     console.log(error.error);
-   //     console.log(error.headers);
-   //   });
+    this.service.postPetition(this.urlLogin, this.login).then(data => {
+      Utilidades.presentAlert("", data.message);
+      if (data.success) {
+        let token: Token = new Token(data.data);
+        sessionStorage.setItem('login', JSON.stringify(token));
+        this.router.navigate(['/home']);
+      }
+    }).catch(error => {
+      Utilidades.presentAlert("", error.message);
+      console.log(error.status);
+      console.log(error.error);
+      console.log(error.headers);
+    });
   }
 
   registrarNuevoUsuario() {
     this.router.navigate(['/register'])
-  }
-
-  async presentAlert(header: string, mensaje: string) {
-    const alert = await this.alertController.create({
-      cssClass: 'my-custom-class',
-      header: header,
-      message: mensaje,
-      buttons: [
-        {
-          text: 'Ok',
-          role: 'Ok',
-          cssClass: 'secondary',
-          handler: (blah) => {
-            if (this.lLoginIsValid) {
-              this.router.navigate(['/home']);
-            }
-          }
-        }]
-    });
-    await alert.present();
   }
 
   //prueba

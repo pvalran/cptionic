@@ -29,7 +29,7 @@ const routes: Routes = [
   },
   {
     path: 'consultaburo',
-    loadChildren: () => import('./pages/home/consultaburo/consultaburo.module').then( m => m.ConsultaburoPageModule)
+    loadChildren: () => import('./pages/menuDatos/consultaburo/consultaburo.module').then( m => m.ConsultaburoPageModule)
   },
   {
     path: 'menu',
@@ -66,6 +66,14 @@ const routes: Routes = [
   {
     path: 'adicionalcuestionariomedico',
     loadChildren: () => import('./pages/menuDatos/adicionalcuestionariomedico/adicionalcuestionariomedico.module').then( m => m.AdicionalcuestionariomedicoPageModule)
+  },
+  {
+    path: 'declaracioninicial',
+    loadChildren: () => import('./pages/menuDatos/declaracioninicial/declaracioninicial.module').then( m => m.DeclaracioninicialPageModule)
+  },
+  {
+    path: 'documentos',
+    loadChildren: () => import('./pages/home/documentos/documentos.module').then( m => m.DocumentosPageModule)
   },
 ];
 
