@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+import { ISelectDTO } from 'src/app/interfaces/ISelectDTO';
 
 @Component({
   selector: 'app-captureid',
@@ -9,13 +10,28 @@ import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 })
 export class CaptureidPage implements OnInit {
 
+  lstDocumentoIndentidad: ISelectDTO[] = [
+    {
+      id: 1,
+      text: 'Credencial de elector'
+    },
+    {
+      id: 2,
+      text: 'Pasaporte'
+    }
+  ];
+
   constructor(private router: Router, private camera: Camera) { }
 
   ngOnInit() {
-
+    //document.getElementById("file-input-anverso").addEventListener('change', (event) => {
+    //  debugger;
+     // const resultado = document.querySelector('.resultado');
+      //resultado.textContent = `Te gusta el sabor ${event.target.value}`;
+    //});
   }
 
-  useCamara() {
+  useCamara(idInput: string) {
     const options: CameraOptions = {
       quality: 100,
       destinationType: this.camera.DestinationType.FILE_URI,
@@ -30,7 +46,10 @@ export class CaptureidPage implements OnInit {
       // If it's base64 (DATA_URL):
       let base64Image = 'data:image/jpeg;base64,' + imageData;
     }, (err) => {
-      // Handle error
+      //Si no es un celular usa el input file
+      if (err == "cordova_not_available") {
+        document.getElementById(idInput).click();
+      }
     });
   }
 

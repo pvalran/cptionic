@@ -37,6 +37,8 @@ export class LoginPage implements OnInit {
   }
 
   iniciarSesion() {
+    this.router.navigate(['/home']);
+    /*
     this.service.postPetition(this.urlLogin, this.login).then(data => {
       Utilidades.presentAlert("", data.message);
       if (data.success) {
@@ -50,6 +52,7 @@ export class LoginPage implements OnInit {
       console.log(error.error);
       console.log(error.headers);
     });
+    */
   }
 
   registrarNuevoUsuario() {

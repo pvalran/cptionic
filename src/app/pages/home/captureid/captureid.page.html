@@ -17,10 +17,9 @@
             <ion-col sizeXl="4" sizeLg="6" sizeMd="6" sizeXs="12">
               <ion-item style="margin-top: 7px;" lines="full">
                 <span class="labelForm">Seleccione el tipo de documento de indentidad</span>
-                <ion-select class="inputPersonal" placeholder="Seleccione la colonia"
-                  style="width: 100%; margin-top: 10px;">
-                  <ion-select-option value="c">Credencial de elector</ion-select-option>
-                  <ion-select-option value="l">Licencia de conducir</ion-select-option>
+                <ion-select class="inputPersonal" placeholder="Seleccione el tipo de documento" style="width: 100%;">
+                  <ion-select-option *ngFor="let item of lstDocumentoIndentidad" value="{{item.id}}">{{item.text}}
+                  </ion-select-option>
                 </ion-select>
               </ion-item>
             </ion-col>
@@ -29,12 +28,14 @@
             <ion-col sizeXl="4" sizeLg="6" sizeMd="6" sizeXs="12" style="margin-top: 10px;">
               <span class="labelForm" style="margin-left: 15px;">Captura el anverso del documento</span>
               <br />
-              <img (click)="useCamara()" src="../../assets/img/camera-outline.svg" class="imageCamera">
+              <img (click)="useCamara('fileInputAnverso')" src="../../assets/img/camera-outline.svg" class="imageCamera">
+              <input id="fileInputAnverso" type="file" accept="image/jpeg" style="display: none;" />
             </ion-col>
             <ion-col sizeXl="4" sizeLg="6" sizeMd="6" sizeXs="12" style="margin-top: 10px;">
               <span class="labelForm" style="margin-left: 15px;">Captura el reverso del documento</span>
               <br />
-              <img src="../../assets/img/camera-outline.svg" class="imageCamera">
+              <img (click)="useCamara('fileInputReverso')" src="../../assets/img/camera-outline.svg" class="imageCamera">
+              <input id="fileInputReverso" type="file" accept="image/jpeg" style="display: none;" />
             </ion-col>
           </ion-row>
           <div class="divisorSolicitud">

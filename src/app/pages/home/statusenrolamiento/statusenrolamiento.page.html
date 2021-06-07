@@ -1,0 +1,39 @@
+<ion-toolbar color="medium">
+  <ion-buttons slot="start">
+    <ion-menu-button autoHide="false"></ion-menu-button>
+  </ion-buttons>
+  <p>Enrolamiento Solicitud de credito</p>
+</ion-toolbar>
+<ion-content>
+  <ion-row>
+    <ion-col sizeLg="1" sizeMd="0" sizeXs="0"></ion-col>
+    <ion-col sizeLg="10" sizeMd="12" sizeXs="12">
+      <div id="container" style="margin-left: 15px; margin-right: 15px;">
+        <ion-list>
+          <ion-row>
+            <ion-col *ngFor="let item of menuEnrolamientos" sizeXl="3" sizeLg="6" sizeMd="6" sizeXs="12">
+              <ion-row class="contenedorSolicitud">
+                <ion-col size="9">
+                  <div>
+                    <div class="{{item.css}}"></div>
+                    <span class="statusSolicitud">{{item.status}}</span>
+                    <div style="clear: both">
+                      <span>{{item.nombre}}</span><br />
+                      <span class="tipoSolicitud">{{item.tipo}}</span>
+                    </div>
+                  </div>
+                </ion-col>
+                <ion-col size="3">
+                  <div>
+                    <h5> Sol. {{item.id}}</h5>
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-col>
+          </ion-row>
+        </ion-list>
+      </div>
+    </ion-col>
+    <ion-col sizeLg="1" sizeMd="0" sizeXs="0"></ion-col>
+  </ion-row>
+</ion-content>

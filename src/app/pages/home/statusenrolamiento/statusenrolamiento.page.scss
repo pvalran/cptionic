@@ -1,0 +1,48 @@
+.circuloAprobado {
+    width: 10px;
+    height: 10px;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    background: #00FF00;
+    float: left;
+}
+
+.circuloRevision {
+    width: 10px;
+    height: 10px;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    background: #FFFF00;
+    float: left;
+}
+
+.circuloDeclinado {
+    width: 10px;
+    height: 10px;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    background: #FF0000;
+    float: left;
+}
+
+.statusSolicitud {
+    font-size: 12px;
+    float: left;
+    margin-left: 10px;
+}
+
+.tipoSolicitud {
+    color: gray;
+    font-size: 14px;
+}
+
+.contenedorSolicitud {
+    background-color: #F9FAFC;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+}

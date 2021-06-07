@@ -1,9 +1,184 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>documentos</ion-title>
-  </ion-toolbar>
-</ion-header>
-
+<ion-toolbar color="medium">
+  <ion-buttons slot="start">
+    <ion-menu-button autoHide="false"></ion-menu-button>
+  </ion-buttons>
+  <p>Enrolamiento Solicitud de credito</p>
+</ion-toolbar>
 <ion-content>
+  <ion-row>
+    <ion-col sizeLg="1" sizeMd="0" sizeXs="0"></ion-col>
+    <ion-col sizeLg="10" sizeMd="12" sizeXs="12">
+      <div id="container">
+        <form #formInformacionPersonal="ngForm">
+          <div class="divisorSolicitud">
+            <p>Escanear Documentos Solicitante</p>
+          </div>
+          <br />
+          <span class="labelFormDocumentos">Seleccione el comprobante de domicilio</span>
+          <ion-row style="margin: 0px; padding: 0px;">
+            
+            <ion-col sizeXl="3" sizeLg="4" sizeMd="4" sizeXs="8">
+              <ion-item lines="full">
+                <ion-select placeholder="Seleccione el tipo de documento">
+                  <ion-select-option *ngFor="let item of lstComprobante" value="{{item.id}}">{{item.text}}
+                  </ion-select-option>
+                </ion-select>
+              </ion-item>
+            </ion-col>
+            <ion-col sizeXl="1" sizeLg="2" sizeMd="2" sizeXs="4">
+              <ion-row>
+                <ion-col sizeXl="6" sizeLg="6" sizeMd="6" sizeXs="6">
+                  <img  src="../../assets/img/camera-outline.svg" style="height: 5ch;">
+                </ion-col>
+                <ion-col sizeXl="6" sizeLg="6" sizeMd="6" sizeXs="6">
+                  <img src="../../assets/img/decline.png" class="imageEstatus2">
+                </ion-col>
+              </ion-row>
+            </ion-col>
 
+            <ion-col sizeXl="3" sizeLg="4" sizeMd="4" sizeXs="8">
+              <ion-item lines="full">
+                <span class="labelFormDocumentosText">CURP</span>
+              </ion-item>
+            </ion-col>
+            <ion-col sizeXl="1" sizeLg="2" sizeMd="2" sizeXs="4">
+              <ion-row>
+                <ion-col sizeXl="6" sizeLg="6" sizeMd="6" sizeXs="6">
+                  <img  src="../../assets/img/camera-outline.svg" style="height: 5ch;">
+                </ion-col>
+                <ion-col sizeXl="6" sizeLg="6" sizeMd="6" sizeXs="6">
+                  <img src="../../assets/img/acept.png" class="imageEstatus2">
+                </ion-col>
+              </ion-row>
+            </ion-col>
+
+            <ion-col sizeXl="3" sizeLg="4" sizeMd="4" sizeXs="8">
+              <ion-item lines="full">
+                <span class="labelFormDocumentosText">Comprobante de Ingresos</span>
+              </ion-item>
+            </ion-col>
+            <ion-col sizeXl="1" sizeLg="2" sizeMd="2" sizeXs="4">
+              <ion-row>
+                <ion-col sizeXl="6" sizeLg="6" sizeMd="6" sizeXs="6">
+                  <img  src="../../assets/img/camera-outline.svg" style="height: 5ch;">
+                </ion-col>
+                <ion-col sizeXl="6" sizeLg="6" sizeMd="6" sizeXs="6">
+                  <img src="../../assets/img/empty.png" class="imageEstatus2">
+                </ion-col>
+              </ion-row>
+            </ion-col>
+
+            <ion-col sizeXl="3" sizeLg="4" sizeMd="4" sizeXs="8">
+              <ion-item lines="full">
+                <span class="labelFormDocumentosText">Carta de consentimiento</span>
+              </ion-item>
+            </ion-col>
+            <ion-col sizeXl="1" sizeLg="2" sizeMd="2" sizeXs="4">
+              <ion-row>
+                <ion-col sizeXl="6" sizeLg="6" sizeMd="6" sizeXs="6">
+                  <img  src="../../assets/img/camera-outline.svg" style="height: 5ch;">
+                </ion-col>
+                <ion-col sizeXl="6" sizeLg="6" sizeMd="6" sizeXs="6">
+                  <img src="../../assets/img/warning.png" class="imageEstatus2">
+                </ion-col>
+              </ion-row>
+            </ion-col>
+
+            <ion-col sizeXl="3" sizeLg="4" sizeMd="4" sizeXs="8">
+              <ion-item lines="full">
+                <span class="labelFormDocumentosText">Acta de Matrimonio</span>
+              </ion-item>
+            </ion-col>
+            <ion-col sizeXl="1" sizeLg="2" sizeMd="2" sizeXs="4">
+              <ion-row>
+                <ion-col sizeXl="6" sizeLg="6" sizeMd="6" sizeXs="6">
+                  <img  src="../../assets/img/camera-outline.svg" style="height: 5ch;">
+                </ion-col>
+                <ion-col sizeXl="6" sizeLg="6" sizeMd="6" sizeXs="6">
+                  <img src="../../assets/img/warning.png" class="imageEstatus2">
+                </ion-col>
+              </ion-row>
+            </ion-col>
+
+            <ion-col sizeXl="3" sizeLg="4" sizeMd="4" sizeXs="8">
+              <ion-item lines="full">
+                <span class="labelFormDocumentosText">INE del Conyuge</span>
+              </ion-item>
+            </ion-col>
+            <ion-col sizeXl="1" sizeLg="2" sizeMd="2" sizeXs="4">
+              <ion-row>
+                <ion-col sizeXl="6" sizeLg="6" sizeMd="6" sizeXs="6">
+                  <img  src="../../assets/img/camera-outline.svg" style="height: 5ch;">
+                </ion-col>
+                <ion-col sizeXl="6" sizeLg="6" sizeMd="6" sizeXs="6">
+                  <img src="../../assets/img/warning.png" class="imageEstatus2">
+                </ion-col>
+              </ion-row>
+            </ion-col>
+
+            <ion-col sizeXl="3" sizeLg="4" sizeMd="4" sizeXs="8">
+              <ion-item lines="full">
+                <span class="labelFormDocumentosText">Solicitud de credito</span>
+              </ion-item>
+            </ion-col>
+            <ion-col sizeXl="1" sizeLg="2" sizeMd="2" sizeXs="4">
+              <ion-row>
+                <ion-col sizeXl="6" sizeLg="6" sizeMd="6" sizeXs="6">
+                  <img  src="../../assets/img/camera-outline.svg" style="height: 5ch;">
+                </ion-col>
+                <ion-col sizeXl="6" sizeLg="6" sizeMd="6" sizeXs="6">
+                  <img src="../../assets/img/warning.png" class="imageEstatus2">
+                </ion-col>
+              </ion-row>
+            </ion-col>
+
+          </ion-row>
+          <div class="divisorSolicitud">
+            <p>Adjuntar Expediente del Fovissste</p>
+          </div>
+          <ion-row>
+            <ion-col sizeXl="4" sizeLg="6" sizeMd="6" sizeXs="12">
+              <div style="margin-left: 10px;">
+                <span>1.- Entrar a <a
+                    href="javascript:window.open('https://oficinavirtual.issste.gob.mx','','toolbar=yes');void 0">https://oficinavirtual.issste.gob.mx</a></span><br>
+                <span>2.- Crear un usuario con su email</span><br>
+                <span>3.- Abrir sesion</span><br>
+                <span>4.- Descargar el expediente</span><br>
+                <span>5.- Adjuntar documento PDF</span>
+              </div>
+              <div style="float: right; margin-right: 20px;">
+                <img src="../../assets/img/clip.png" class="imagenAdjuntar">
+                <img src="../../assets/img/camera-outline.svg" class="imagenAdjuntar">
+              </div>
+            </ion-col>
+          </ion-row>
+          <div class="divisorSolicitud">
+            <p>Adjuntar saldo subcuenta de Vivienda</p>
+          </div>
+          <ion-row style="margin-bottom: 70px;">
+            <ion-col sizeXl="4" sizeLg="6" sizeMd="6" sizeXs="12">
+              <div style="margin-left: 10px;">
+                <span>1.- Entrar a <a
+                    href="javascript:window.open('https://originacion.fovissste.com.mx/Originacion/cgi-bin/Predictamen/SimuladorParaTodos.aspx','','toolbar=yes');void 0">https://originacion.fovissste.com.mx/Originacion/cgi-bin/Predictamen/SimuladorParaTodos.aspx</a></span><br>
+                <span>2.- Capturar la CURP </span><br>
+                <span>3.- Descargar archivo PDF</span><br>
+                <span>4.- Adjuntar documento PDF</span>
+              </div>
+              <div style="float: right; margin-right: 20px;">
+                <img src="../../assets/img/clip.png" class="imagenAdjuntar">
+                <img src="../../assets/img/camera-outline.svg" class="imagenAdjuntar">
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+            <ion-fab-button (click)="guardarDocumentos()">
+              <img src="../../assets/img/save_white.svg" class="btnSave">
+            </ion-fab-button>
+          </ion-fab>
+        </form>
+      </div>
+    </ion-col>
+    <ion-col sizeLg="1" sizeMd="0" sizeXs="0">
+    </ion-col>
+  </ion-row>
 </ion-content>

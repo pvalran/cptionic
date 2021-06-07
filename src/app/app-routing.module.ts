@@ -75,6 +75,10 @@ const routes: Routes = [
     path: 'documentos',
     loadChildren: () => import('./pages/home/documentos/documentos.module').then( m => m.DocumentosPageModule)
   },
+  {
+    path: 'statusenrolamiento',
+    loadChildren: () => import('./pages/home/statusenrolamiento/statusenrolamiento.module').then( m => m.StatusenrolamientoPageModule)
+  },
 ];
 
 @NgModule({

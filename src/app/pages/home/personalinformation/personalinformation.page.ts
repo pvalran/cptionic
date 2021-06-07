@@ -29,7 +29,7 @@ export class PersonalinformationPage implements OnInit {
     estado: null
   };
 
-  private isDisabled: boolean=true;
+  isDisabled: boolean=true;
 
   constructor(private router: Router, private service: PostServiceService) { }
 
