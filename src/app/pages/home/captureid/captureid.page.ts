@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { ISelectDTO } from 'src/app/interfaces/ISelectDTO';
+import { Utilidades } from 'src/app/service/utilidades';
 
 @Component({
   selector: 'app-captureid',
@@ -9,6 +10,10 @@ import { ISelectDTO } from 'src/app/interfaces/ISelectDTO';
   styleUrls: ['./captureid.page.scss'],
 })
 export class CaptureidPage implements OnInit {
+  @ViewChild('fileInputAnverso') anverso: ElementRef;
+  @ViewChild('fileInputReverso') reverso: ElementRef;
+
+  tipoDocumento: number = null;
 
   lstDocumentoIndentidad: ISelectDTO[] = [
     {
@@ -21,14 +26,9 @@ export class CaptureidPage implements OnInit {
     }
   ];
 
-  constructor(private router: Router, private camera: Camera) { }
+  constructor(private router: Router, private camera: Camera, private render2: Renderer2) { }
 
   ngOnInit() {
-    //document.getElementById("file-input-anverso").addEventListener('change', (event) => {
-    //  debugger;
-     // const resultado = document.querySelector('.resultado');
-      //resultado.textContent = `Te gusta el sabor ${event.target.value}`;
-    //});
   }
 
   useCamara(idInput: string) {
@@ -48,12 +48,46 @@ export class CaptureidPage implements OnInit {
     }, (err) => {
       //Si no es un celular usa el input file
       if (err == "cordova_not_available") {
-        document.getElementById(idInput).click();
+        let inputSelect;
+        if (idInput == "fileInputAnverso")
+          inputSelect = this.anverso.nativeElement;
+        if (idInput == "fileInputReverso")
+          inputSelect = this.reverso.nativeElement;
+
+        inputSelect.click();
       }
     });
   }
 
   guardarIdCapture() {
-    this.router.navigate(['/personalinformation'])
+    if (this.validateForm()) {
+      //Guardar los datos
+      this.router.navigate(['/personalinformation'])
+    }
+
+  }
+
+  validateForm(): boolean {
+    let validateInput: string = "";
+    let fileInputAnverso = this.anverso.nativeElement;
+    let fileInputReverso = this.reverso.nativeElement;
+    //USAR RENDER2 PARA SETEAR VALUES
+    //this.render2.setValue(fileInputAnverso, 'Valor')
+
+    if (Utilidades.isValidNumber(this.tipoDocumento))
+      validateInput = "Seleccione el tipo de documento";
+
+    if (Utilidades.isEmpty(fileInputAnverso.value))
+      validateInput = "Ingrese la fotografia del anverso del documento";
+
+    if (Utilidades.isEmpty(fileInputReverso.value))
+      validateInput = "Ingrese la fotografia del reverso del documento";
+
+    if (validateInput != "") {
+      Utilidades.presentAlert("Advertencia", validateInput);
+      return false
+    }
+
+    return true;
   }
 }

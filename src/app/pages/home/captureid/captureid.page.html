@@ -17,7 +17,8 @@
             <ion-col sizeXl="4" sizeLg="6" sizeMd="6" sizeXs="12">
               <ion-item style="margin-top: 7px;" lines="full">
                 <span class="labelForm">Seleccione el tipo de documento de indentidad</span>
-                <ion-select class="inputPersonal" placeholder="Seleccione el tipo de documento" style="width: 100%;">
+                <ion-select class="inputPersonal" name="tipoDocumento" [(ngModel)]="tipoDocumento"
+                  placeholder="Seleccione el tipo de documento" style="width: 100%;">
                   <ion-select-option *ngFor="let item of lstDocumentoIndentidad" value="{{item.id}}">{{item.text}}
                   </ion-select-option>
                 </ion-select>
@@ -28,14 +29,16 @@
             <ion-col sizeXl="4" sizeLg="6" sizeMd="6" sizeXs="12" style="margin-top: 10px;">
               <span class="labelForm" style="margin-left: 15px;">Captura el anverso del documento</span>
               <br />
-              <img (click)="useCamara('fileInputAnverso')" src="../../assets/img/camera-outline.svg" class="imageCamera">
-              <input id="fileInputAnverso" type="file" accept="image/jpeg" style="display: none;" />
+              <img (click)="useCamara('fileInputAnverso')" src="../../assets/img/camera-outline.svg"
+                class="imageCamera">
+              <input #fileInputAnverso id="fileInputAnverso" type="file" accept="image/jpeg" style="display: none;" />
             </ion-col>
             <ion-col sizeXl="4" sizeLg="6" sizeMd="6" sizeXs="12" style="margin-top: 10px;">
               <span class="labelForm" style="margin-left: 15px;">Captura el reverso del documento</span>
               <br />
-              <img (click)="useCamara('fileInputReverso')" src="../../assets/img/camera-outline.svg" class="imageCamera">
-              <input id="fileInputReverso" type="file" accept="image/jpeg" style="display: none;" />
+              <img (click)="useCamara('fileInputReverso')" src="../../assets/img/camera-outline.svg"
+                class="imageCamera">
+              <input #fileInputReverso id="fileInputReverso" type="file" accept="image/jpeg" style="display: none;" />
             </ion-col>
           </ion-row>
           <div class="divisorSolicitud">
