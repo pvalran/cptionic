@@ -18,8 +18,6 @@ export class LoginPage implements OnInit {
     password: ''
   };
 
-  urlLogin: string = "https://64.225.45.9:90/credencial/login";
-
   constructor(
     private router: Router,
     private alertController: AlertController,
@@ -36,10 +34,8 @@ export class LoginPage implements OnInit {
     };
   }
 
-  iniciarSesion() {
-    this.router.navigate(['/home']);
-    /*
-    this.service.postPetition(this.urlLogin, this.login).then(data => {
+  iniciarSesion() {   
+    this.service.postPetition("credencial/login", this.login).then(data => {
       Utilidades.presentAlert("", data.message);
       if (data.success) {
         let token: Token = new Token(data.data);
@@ -52,7 +48,7 @@ export class LoginPage implements OnInit {
       console.log(error.error);
       console.log(error.headers);
     });
-    */
+    
   }
 
   registrarNuevoUsuario() {

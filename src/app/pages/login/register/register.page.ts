@@ -19,7 +19,6 @@ export class RegisterPage implements OnInit {
   };
 
   passConfirmed: string;
-  urlAddUser: string = "https://64.225.45.9:90/credencial/addUser";
 
   constructor(
     private router: Router,
@@ -42,7 +41,7 @@ export class RegisterPage implements OnInit {
   registrarUsuario() {
 
     if (this.validaUsuario()) {
-      this.service.postPetition(this.urlAddUser, this.usuario).then(data => {
+      this.service.postPetition("credencial/addUser", this.usuario).then(data => {
         Utilidades.presentAlert("", data.message);
         if (data.success) {
           this.router.navigate(['/login']);

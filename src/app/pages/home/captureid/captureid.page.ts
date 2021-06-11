@@ -9,12 +9,15 @@ import { Utilidades } from 'src/app/service/utilidades';
   templateUrl: './captureid.page.html',
   styleUrls: ['./captureid.page.scss'],
 })
+
+
 export class CaptureidPage implements OnInit {
   @ViewChild('fileInputAnverso') anverso: ElementRef;
   @ViewChild('fileInputReverso') reverso: ElementRef;
 
   tipoDocumento: number = null;
-
+  file: File;
+  filedirs: any[] = [];
   lstDocumentoIndentidad: ISelectDTO[] = [
     {
       id: 1,
@@ -26,7 +29,12 @@ export class CaptureidPage implements OnInit {
     }
   ];
 
-  constructor(private router: Router, private camera: Camera, private render2: Renderer2) { }
+  constructor(
+    private router: Router,
+    private camera: Camera,
+    private render2: Renderer2
+  ) { }
+
 
   ngOnInit() {
   }
@@ -59,11 +67,15 @@ export class CaptureidPage implements OnInit {
     });
   }
 
+  useScaner() {
+
+  }
+
   guardarIdCapture() {
-    if (this.validateForm()) {
-      //Guardar los datos
-      this.router.navigate(['/personalinformation'])
-    }
+    //if (this.validateForm()) {
+    //Guardar los datos
+    this.router.navigate(['/personalinformation'])
+    //}
 
   }
 

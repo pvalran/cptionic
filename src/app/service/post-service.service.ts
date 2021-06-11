@@ -9,9 +9,10 @@ import { IObjRequest } from '../interfaces/IObjRequest';
 export class PostServiceService {
 
   constructor(private httpClient: HttpClient) { }
+  urlServer: string = "https://64.225.45.9:90/";
 
   getPetition(url: string) {
-    return this.httpClient.get<IObjRequest>(url);
+    return this.httpClient.get<IObjRequest>(this.urlServer + url);
   }
 
   postPetition(url: string, data: any, token: string = "") {
@@ -23,7 +24,7 @@ export class PostServiceService {
       httpOptions.set('Authorization', token);
     }
 
-    return this.httpClient.post<IObjRequest>(url, data, { headers: httpOptions }).toPromise();
+    return this.httpClient.post<IObjRequest>(this.urlServer + url, data, { headers: httpOptions }).toPromise();
   }
 
 }
