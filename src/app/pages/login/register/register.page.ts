@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavController } from '@ionic/angular';
+
 import { PostServiceService } from 'src/app/service/post-service.service';
 import { Utilidades } from 'src/app/service/utilidades';
 
@@ -21,7 +22,7 @@ export class RegisterPage implements OnInit {
   passConfirmed: string;
 
   constructor(
-    private router: Router,
+    private navCtrl: NavController,
     private service: PostServiceService
   ) { }
 
@@ -44,7 +45,7 @@ export class RegisterPage implements OnInit {
       this.service.postPetition("credencial/addUser", this.usuario).then(data => {
         Utilidades.presentAlert("", data.message);
         if (data.success) {
-          this.router.navigate(['/login']);
+          this.navCtrl.navigateRoot('/login', { animated: true });
         }
       })
         .catch(error => {

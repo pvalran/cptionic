@@ -46,9 +46,6 @@ export class HomePage implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit() {
-    // if (!Utilidades.validSession()) {
-    //   this.router.navigate(['/login']);
-    // }
   }
 
   addProduct(item) {

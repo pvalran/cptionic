@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AlertController } from '@ionic/angular';
+import { NavController } from '@ionic/angular';
+
 import { Token } from 'src/app/models/Token';
 import { PostServiceService } from 'src/app/service/post-service.service';
 import { Utilidades } from 'src/app/service/utilidades';
@@ -20,8 +21,8 @@ export class LoginPage implements OnInit {
 
   constructor(
     private router: Router,
-    private alertController: AlertController,
-    private service: PostServiceService
+    private service: PostServiceService,
+    private navCtrl: NavController
   ) { }
 
   ngOnInit() {
@@ -34,21 +35,19 @@ export class LoginPage implements OnInit {
     };
   }
 
-  iniciarSesion() {   
+  iniciarSesion() {
     this.service.postPetition("credencial/login", this.login).then(data => {
-      Utilidades.presentAlert("", data.message);
       if (data.success) {
         let token: Token = new Token(data.data);
-        sessionStorage.setItem('login', JSON.stringify(token));
-        this.router.navigate(['/home']);
+        this.service.guardarToken(token.token);
+        this.service.validaToken();
+        this.navCtrl.navigateRoot('/home', { animated: true });
       }
     }).catch(error => {
+      this.service.limpiaToken();
       Utilidades.presentAlert("", error.message);
-      console.log(error.status);
-      console.log(error.error);
-      console.log(error.headers);
+      console.log(error);
     });
-    
   }
 
   registrarNuevoUsuario() {
@@ -56,9 +55,10 @@ export class LoginPage implements OnInit {
   }
 
   //prueba
-  html: string = "<img src='../../../assets/img/informacionFondo.png'/>"
+
   async recuperarContrasena() {
-    const alert = await this.alertController.create({
+    /*let html: string = "<img src='../../../assets/img/informacionFondo.png'/>"
+      const alert = await this.alertController.create({
       cssClass: 'custom-alertDanger',
       //header: 'Confirm!',
       message: this.html,
@@ -71,6 +71,6 @@ export class LoginPage implements OnInit {
         }
       ]
     });
-    await alert.present();
+    await alert.present();*/
   }
 }

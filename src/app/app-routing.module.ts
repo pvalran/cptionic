@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { UsuarioGuard } from './guard/usuario.guard';
 
 const routes: Routes = [
   {
     path: 'home',
-    loadChildren: () => import('./pages/home/home/home.module').then( m => m.HomePageModule)
+    loadChildren: () => import('./pages/home/home/home.module').then( m => m.HomePageModule),
+    canLoad: [UsuarioGuard]
   },
   {
     path: '',
@@ -21,11 +23,13 @@ const routes: Routes = [
   },
   {
     path: 'captureid',
-    loadChildren: () => import('./pages/home/captureid/captureid.module').then( m => m.CaptureidPageModule)
+    loadChildren: () => import('./pages/home/captureid/captureid.module').then( m => m.CaptureidPageModule),
+    canLoad: [UsuarioGuard]
   },
   {
     path: 'personalinformation',
-    loadChildren: () => import('./pages/home/personalinformation/personalinformation.module').then( m => m.PersonalinformationPageModule)
+    loadChildren: () => import('./pages/home/personalinformation/personalinformation.module').then( m => m.PersonalinformationPageModule),
+    canLoad: [UsuarioGuard]
   },
   {
     path: 'consultaburo',
@@ -73,11 +77,13 @@ const routes: Routes = [
   },
   {
     path: 'documentos',
-    loadChildren: () => import('./pages/home/documentos/documentos.module').then( m => m.DocumentosPageModule)
+    loadChildren: () => import('./pages/home/documentos/documentos.module').then( m => m.DocumentosPageModule),
+    canLoad: [UsuarioGuard]
   },
   {
     path: 'statusenrolamiento',
-    loadChildren: () => import('./pages/home/statusenrolamiento/statusenrolamiento.module').then( m => m.StatusenrolamientoPageModule)
+    loadChildren: () => import('./pages/home/statusenrolamiento/statusenrolamiento.module').then( m => m.StatusenrolamientoPageModule),
+    canLoad: [UsuarioGuard]
   },
 ];
 

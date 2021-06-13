@@ -1,5 +1,7 @@
 import { Component, DebugEventListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NavController } from '@ionic/angular';
+
 import { PostServiceService } from 'src/app/service/post-service.service';
 import { Utilidades } from 'src/app/service/utilidades';
 
@@ -29,25 +31,30 @@ export class PersonalinformationPage implements OnInit {
     estado: null
   };
 
-  isDisabled: boolean=true;
+  isDisabled: boolean = true;
 
-  constructor(private router: Router, private service: PostServiceService) { }
+  constructor(
+    private service: PostServiceService,
+    private navCtrl: NavController
+    ) { }
 
   ngOnInit() {
   }
 
   guardarPersonalInformation() {
-    //this.validateForm();
-    this.router.navigate(['/documentos'])
+    this.navCtrl.navigateRoot('/documentos', { animated: true });
+    //if (this.validateForm()) {
+    //  this.navCtrl.navigateRoot('/documentos', { animated: true });
+    //}
   }
 
   obtenerDatosCP() {
     if (!Utilidades.isValidNumber(this.personalInformation.CP)) {
       this.isDisabled = false;
 
-      let url: string = "https://64.225.45.9:90/directions/getByCP/" + this.personalInformation.CP
+      let url: string = "directions/getByCP/" + this.personalInformation.CP
 
-      this.service.getPetition(url).subscribe(
+      this.service.getPetition("tipo/datosCatalogo").subscribe(
         result => {
           this.personalInformation.colonia = result.data;
         },

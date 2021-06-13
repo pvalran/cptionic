@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+import { NavController } from '@ionic/angular';
+
 import { ISelectDTO } from 'src/app/interfaces/ISelectDTO';
 import { Utilidades } from 'src/app/service/utilidades';
 
@@ -30,9 +31,9 @@ export class CaptureidPage implements OnInit {
   ];
 
   constructor(
-    private router: Router,
     private camera: Camera,
-    private render2: Renderer2
+    private render2: Renderer2,
+    private navCtrl: NavController
   ) { }
 
 
@@ -74,7 +75,7 @@ export class CaptureidPage implements OnInit {
   guardarIdCapture() {
     //if (this.validateForm()) {
     //Guardar los datos
-    this.router.navigate(['/personalinformation'])
+    this.navCtrl.navigateRoot('/personalinformation', { animated: true });
     //}
 
   }

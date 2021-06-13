@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavController } from '@ionic/angular';
+
 import { ISelectDTO } from 'src/app/interfaces/ISelectDTO';
 
 @Component({
@@ -23,15 +24,17 @@ export class DocumentosPage implements OnInit {
       text: 'Agua'
     }
   ];
-  
-  constructor(private router: Router) { }
+
+  constructor(
+    private navCtrl: NavController
+  ) { }
 
   ngOnInit() {
   }
 
   guardarDocumentos() {
     //this.validateForm();
-    this.router.navigate(['/statusenrolamiento'])
+    this.navCtrl.navigateRoot('/statusenrolamiento', { animated: true });
   }
 
 }
