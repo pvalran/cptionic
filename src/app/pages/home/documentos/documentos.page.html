@@ -16,11 +16,10 @@
           <br />
           <span class="labelFormDocumentos">Seleccione el comprobante de domicilio</span>
           <ion-row style="margin: 0px; padding: 0px;">
-            
             <ion-col sizeXl="3" sizeLg="4" sizeMd="4" sizeXs="8">
               <ion-item lines="full">
                 <ion-select placeholder="Seleccione el tipo de documento">
-                  <ion-select-option *ngFor="let item of lstComprobante" value="{{item.id}}">{{item.text}}
+                  <ion-select-option *ngFor="let item of lstComprobante" value="{{item.idTypeDocument}}">{{item.name}}
                   </ion-select-option>
                 </ion-select>
               </ion-item>

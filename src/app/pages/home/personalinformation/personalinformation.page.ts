@@ -30,7 +30,7 @@ export class PersonalinformationPage implements OnInit {
     municipio: null,
     estado: null
   };
-
+  lstGenero: any[] = [];
   isDisabled: boolean = true;
 
   constructor(
@@ -39,6 +39,18 @@ export class PersonalinformationPage implements OnInit {
     ) { }
 
   ngOnInit() {
+    this.service.getPetition("customer/gender/all").subscribe(
+      result => {
+        if(result.data.length > 0){
+          result.data.forEach(element => {
+            this.lstGenero.push(element)
+          });
+        }
+      },
+      error => {
+        console.log(<any>error);
+      }
+    );
   }
 
   guardarPersonalInformation() {
@@ -54,7 +66,7 @@ export class PersonalinformationPage implements OnInit {
 
       let url: string = "directions/getByCP/" + this.personalInformation.CP
 
-      this.service.getPetition("tipo/datosCatalogo").subscribe(
+      this.service.getPetition("user/all").subscribe(
         result => {
           this.personalInformation.colonia = result.data;
         },

@@ -14,10 +14,18 @@ import { Utilidades } from 'src/app/service/utilidades';
 //BORRAR ALERT CONTROLER
 export class LoginPage implements OnInit {
 
+  emailRecuperar: string;
+  validEmail: boolean = false;
+
   login = {
     user: '',
     password: ''
   };
+
+  styleIcon = {
+    color: "danger",
+    icon: "close"
+  }
 
   constructor(
     private router: Router,
@@ -36,8 +44,17 @@ export class LoginPage implements OnInit {
   }
 
   iniciarSesion() {
-    this.service.postPetition("credencial/login", this.login).then(data => {
-      if (data.success) {
+
+    this.navCtrl.navigateRoot('/home', { animated: true });
+
+    /*
+    let body = new URLSearchParams();
+    body.set('username', this.login.user);
+    body.set('password', this.login.password);
+    body.set('grant_type', 'password');
+    
+    this.service.postPetition("oauth/token", body).then(data => {
+      if (data.result) {
         let token: Token = new Token(data.data);
         this.service.guardarToken(token.token);
         this.service.validaToken();
@@ -48,29 +65,48 @@ export class LoginPage implements OnInit {
       Utilidades.presentAlert("", error.message);
       console.log(error);
     });
+    */
   }
 
   registrarNuevoUsuario() {
     this.router.navigate(['/register'])
   }
 
-  //prueba
+  validaEmail(event) {
+    this.validEmail = !Utilidades.isValidEmail(event.detail.value);
 
-  async recuperarContrasena() {
-    /*let html: string = "<img src='../../../assets/img/informacionFondo.png'/>"
-      const alert = await this.alertController.create({
-      cssClass: 'custom-alertDanger',
-      //header: 'Confirm!',
-      message: this.html,
-      buttons: [
-        {
-          text: 'OK',
-          handler: () => {
-            console.log('Confirm Okay');
-          }
-        }
-      ]
-    });
-    await alert.present();*/
+    if (this.validEmail) {
+      this.styleIcon.color = "success";
+      this.styleIcon.icon = "checkmark";
+    } else {
+      this.styleIcon.color = "danger";
+      this.styleIcon.icon = "close";
+    }
+  }
+
+  recuperar() {
+    if (this.validEmail) {
+      const formRec: any = document.getElementById('divFormRecuperar');
+      formRec.style.display = "none";
+      const formRec2: any = document.getElementById('divRecuperado');
+      formRec2.style.display = "block";
+    }
+  }
+
+  recuperarContrasena() {
+    const formRec: any = document.getElementById('divRecuperado');
+    formRec.style.display = "none";
+    const modal: any = document.querySelector('.my-modal');
+    modal.showModal();
+  }
+
+  cerrarModal() {
+    const modal: any = document.querySelector('.my-modal');
+    modal.close();
+    const formRec: any = document.getElementById('divFormRecuperar');
+    formRec.style.display = "block";
+    const formRec2: any = document.getElementById('divRecuperado');
+    formRec2.style.display = "none";
+    this.emailRecuperar = "";
   }
 }

@@ -74,7 +74,8 @@
                 <span class="labelForm">Genero</span>
                 <ion-select name="genero" [(ngModel)]="personalInformation.genero"
                   class="inputPersonal" placeholder="Seleccione el genero" style="width: 100%;">
-                  <ion-select-option value=1>Yucatan</ion-select-option>
+                  <ion-select-option *ngFor="let item of lstGenero" value="{{item.idGender}}">{{item.name}}
+                  </ion-select-option>
                 </ion-select>
               </ion-item>
             </ion-col>

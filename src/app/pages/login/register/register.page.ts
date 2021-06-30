@@ -13,10 +13,10 @@ import { Utilidades } from 'src/app/service/utilidades';
 export class RegisterPage implements OnInit {
 
   usuario = {
-    userName: '',
+    username: '',
     email: '',
-    pass: '',
-    categoryUser: { category_id: 2 }
+    password: '',
+    idCategory: [1]
   };
 
   passConfirmed: string;
@@ -31,35 +31,32 @@ export class RegisterPage implements OnInit {
 
   ngOnDestroy() {
     this.usuario = {
-      userName: '',
+      username: '',
       email: '',
-      pass: '',
-      categoryUser: { category_id: 2 }
+      password: '',
+      idCategory: []
     };
     this.passConfirmed = '';
   }
 
   registrarUsuario() {
-
     if (this.validaUsuario()) {
-      this.service.postPetition("credencial/addUser", this.usuario).then(data => {
+      this.service.postPetition("user/user/create", this.usuario).then(data => {
         Utilidades.presentAlert("", data.message);
-        if (data.success) {
+        if (data.result) {
           this.navCtrl.navigateRoot('/login', { animated: true });
         }
       })
         .catch(error => {
-          Utilidades.presentAlert("", error.error.message);
-          console.log(error.status);
-          console.log(error.error);
-          console.log(error.headers);
+          Utilidades.presentAlert("", error.message);
+          console.log(error);
         });
     }
   }
 
   validaUsuario(): boolean {
 
-    if (Utilidades.isEmpty(this.usuario.userName)) {
+    if (Utilidades.isEmpty(this.usuario.username)) {
       Utilidades.presentAlert("Advertencia", "Ingrese un nombre de usuario");
       return false;
     }
@@ -69,12 +66,12 @@ export class RegisterPage implements OnInit {
       return false;
     }
 
-    if (Utilidades.isEmpty(this.usuario.pass)) {
+    if (Utilidades.isEmpty(this.usuario.password)) {
       Utilidades.presentAlert("Advertencia", "Ingrese una contraseña");
       return false;
     }
 
-    if (this.usuario.pass != this.passConfirmed) {
+    if (this.usuario.password != this.passConfirmed) {
       Utilidades.presentAlert("Advertencia", "La contraseña no coincide");
       return false;
     }

@@ -85,6 +85,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/home/statusenrolamiento/statusenrolamiento.module').then( m => m.StatusenrolamientoPageModule),
     canLoad: [UsuarioGuard]
   },
+  {
+    path: 'menuproductos',
+    loadChildren: () => import('./pages/home/menuproductos/menuproductos.module').then( m => m.MenuproductosPageModule)
+  },
 ];
 
 @NgModule({

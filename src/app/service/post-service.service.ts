@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Storage } from '@ionic/storage-angular';
 import { NavController } from '@ionic/angular';
 
+
 import { IObjRequest } from '../interfaces/IObjRequest';
 import { Token } from 'src/app/models/Token';
 
@@ -18,19 +19,22 @@ export class PostServiceService {
     private navCtrl: NavController,
   ) { }
 
-  urlServer: string = "https://64.225.45.9:90/";
+  urlServer: string = "http://apicpt-env.eba-n3f3tpnc.us-east-1.elasticbeanstalk.com/";
   token: string = null;
+  //urlServer: string = "https://localhost:8080/";
 
   getPetition(url: string) {
     return this.httpClient.get<IObjRequest>(this.urlServer + url);
   }
 
+
   async postPetition(url: string, data: any, token: boolean = false) {
-    return this.httpClient.post<IObjRequest>(this.urlServer + url, data).toPromise();
+     return this.httpClient.post<IObjRequest>(this.urlServer + url, data,).toPromise();
   }
 
   async guardarToken(token: string) {
     this.token = token;
+    this.storage.create();
     await this.storage.set('token', token);
     //await this.validaToken();
   }

@@ -3,6 +3,7 @@ import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { NavController } from '@ionic/angular';
 
 import { ISelectDTO } from 'src/app/interfaces/ISelectDTO';
+import { PostServiceService } from 'src/app/service/post-service.service';
 import { Utilidades } from 'src/app/service/utilidades';
 
 @Component({
@@ -19,25 +20,29 @@ export class CaptureidPage implements OnInit {
   tipoDocumento: number = null;
   file: File;
   filedirs: any[] = [];
-  lstDocumentoIndentidad: ISelectDTO[] = [
-    {
-      id: 1,
-      text: 'Credencial de elector'
-    },
-    {
-      id: 2,
-      text: 'Pasaporte'
-    }
-  ];
+  lstDocumentoIndentidad: any[]= [];
 
   constructor(
     private camera: Camera,
     private render2: Renderer2,
-    private navCtrl: NavController
+    private navCtrl: NavController,
+    private service: PostServiceService
   ) { }
 
 
   ngOnInit() {
+    this.service.getPetition("documents/type/getByClass/1").subscribe(
+      result => {
+        if(result.data.length > 0){
+          result.data.forEach(element => {
+            this.lstDocumentoIndentidad.push(element)
+          });
+        }
+      },
+      error => {
+        console.log(<any>error);
+      }
+    );
   }
 
   useCamara(idInput: string) {

@@ -1,5 +1,5 @@
 export interface IObjRequest {
     message: string;
-    success: boolean;
+    result: boolean;
     data: any[];
 }

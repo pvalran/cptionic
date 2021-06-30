@@ -8,47 +8,18 @@ import { Router } from '@angular/router';
 })
 export class HomePage implements OnInit {
 
-  menuProductos = [
-    {
-      id: 1,
-      text: 'Fovissste Tradicional Individual'
-    },
-    {
-      id: 2,
-      text: 'Fovissste Tradicional Mancomunado'
-    },
-    {
-      id: 3,
-      text: 'Pensionados'
-    },
-    {
-      id: 4,
-      text: 'Conyugal infonavit Fovissste'
-    },
-    {
-      id: 5,
-      text: 'Individual Infonavit Fovissste'
-    },
-    {
-      id: 6,
-      text: 'Fovissste Tradicional Mancomunado'
-    },
-    {
-      id: 7,
-      text: 'Fovissste para todos'
-    },
-    {
-      id: 8,
-      text: 'Creditos Bancarios'
-    }
-  ];
-
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router,
+    ) { }
 
   ngOnInit() {
   }
 
-  addProduct(item) {
-    this.router.navigate(['/captureid']);
+  nuevaSolicitud() {
+    this.router.navigate(['/menuproductos']);
+  }
+
+  verSolicitudes() {
+    this.router.navigate(['/statusenrolamiento']);
   }
 }

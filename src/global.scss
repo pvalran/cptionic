@@ -41,6 +41,35 @@ ion-toolbar{
     --color: #FFFFFF;
 }
 
+dialog {
+    background-color: #FFFFFF;
+    border: none;
+    padding: 2rem;
+    border-radius: 6px;
+    box-shadow: 0 0 40px rgba(0,0,0,0.1), 0 0 10px rgba(0,0,0,0.25);
+    max-width: 90vw;
+  }
+    
+  dialog[open] {
+    animation: appear .15s cubic-bezier(0, 1.8, 1, 1.8);
+  }
+    
+  dialog::backdrop {
+    background: rgba($color: #000000, $alpha: 0.8)
+  }
+    
+  @keyframes appear {
+    from {
+      opacity: 0;
+      transform: translateX(-3rem);
+    }
+    
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
 .divisorSolicitud{
     background-color: #eb445a;
     height: 2ch;
@@ -75,3 +104,4 @@ ion-toolbar{
     position: absolute;
     top: 2px;
 }
+

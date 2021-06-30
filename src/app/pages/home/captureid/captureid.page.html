@@ -19,7 +19,7 @@
                 <span class="labelForm">Seleccione el tipo de documento de indentidad</span>
                 <ion-select class="inputPersonal" name="tipoDocumento" [(ngModel)]="tipoDocumento"
                   placeholder="Seleccione el tipo de documento" style="width: 100%;">
-                  <ion-select-option *ngFor="let item of lstDocumentoIndentidad" value="{{item.id}}">{{item.text}}
+                  <ion-select-option *ngFor="let item of lstDocumentoIndentidad" value="{{item.idTypeDocument}}">{{item.name}}
                   </ion-select-option>
                 </ion-select>
               </ion-item>
