@@ -52,7 +52,7 @@ export class LoginPage implements OnInit {
     body.set('username', this.login.user);
     body.set('password', this.login.password);
     body.set('grant_type', 'password');
-    
+
     this.service.postPetition("oauth/token", body).then(data => {
       if (data.result) {
         let token: Token = new Token(data.data);

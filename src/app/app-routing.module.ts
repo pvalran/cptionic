@@ -6,7 +6,7 @@ const routes: Routes = [
   {
     path: 'home',
     loadChildren: () => import('./pages/home/home/home.module').then( m => m.HomePageModule),
-    canLoad: [UsuarioGuard]
+    //canLoad: [UsuarioGuard]
   },
   {
     path: '',
@@ -24,12 +24,12 @@ const routes: Routes = [
   {
     path: 'captureid',
     loadChildren: () => import('./pages/home/captureid/captureid.module').then( m => m.CaptureidPageModule),
-    canLoad: [UsuarioGuard]
+    //canLoad: [UsuarioGuard]
   },
   {
     path: 'personalinformation',
     loadChildren: () => import('./pages/home/personalinformation/personalinformation.module').then( m => m.PersonalinformationPageModule),
-    canLoad: [UsuarioGuard]
+    //canLoad: [UsuarioGuard]
   },
   {
     path: 'consultaburo',
@@ -78,12 +78,12 @@ const routes: Routes = [
   {
     path: 'documentos',
     loadChildren: () => import('./pages/home/documentos/documentos.module').then( m => m.DocumentosPageModule),
-    canLoad: [UsuarioGuard]
+    //canLoad: [UsuarioGuard]
   },
   {
     path: 'statusenrolamiento',
     loadChildren: () => import('./pages/home/statusenrolamiento/statusenrolamiento.module').then( m => m.StatusenrolamientoPageModule),
-    canLoad: [UsuarioGuard]
+    //canLoad: [UsuarioGuard]
   },
   {
     path: 'menuproductos',

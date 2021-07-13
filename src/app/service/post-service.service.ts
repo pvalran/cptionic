@@ -19,9 +19,9 @@ export class PostServiceService {
     private navCtrl: NavController,
   ) { }
 
-  urlServer: string = "http://apicpt-env.eba-n3f3tpnc.us-east-1.elasticbeanstalk.com/";
+  //urlServer: string = "http://apicpt-env.eba-n3f3tpnc.us-east-1.elasticbeanstalk.com/";
   token: string = null;
-  //urlServer: string = "https://localhost:8080/";
+  urlServer: string = "http://localhost:8080/";
 
   getPetition(url: string) {
     return this.httpClient.get<IObjRequest>(this.urlServer + url);
