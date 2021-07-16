@@ -11,10 +11,10 @@ export class MenuPage implements OnInit {
   constructor(private router: Router) {}
 
   ngOnInit() {
-    this.router.navigate(['/home']);
+    //this.router.navigate(['/home']);
   }
 
   adicionalesNavegacion(ruta){
-    this.router.navigate([ruta])
+    this.router.navigate([ruta]);
   }
 }

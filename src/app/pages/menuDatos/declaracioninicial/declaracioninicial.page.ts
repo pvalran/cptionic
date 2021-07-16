@@ -20,7 +20,7 @@ export class DeclaracioninicialPage implements OnInit {
 
   ngOnInit() {
     //if (!Utilidades.validSession()) {
-      this.router.navigate(['/home']);
+      //this.router.navigate(['/home']);
     //}
   }
 

@@ -64,7 +64,7 @@ export class PersonalinformationPage implements OnInit {
     if (!Utilidades.isValidNumber(this.personalInformation.CP)) {
       this.isDisabled = false;
 
-      let url: string = "directions/getByCP/" + this.personalInformation.CP
+      let url: string = "directions/getByCP/" + this.personalInformation.CP;
 
       this.service.getPetition("user/all").subscribe(
         result => {
@@ -130,7 +130,7 @@ export class PersonalinformationPage implements OnInit {
 
     if (validateInput != "") {
       Utilidades.presentAlert("Advertencia", validateInput);
-      return false
+      return false;
     }
 
     return true;

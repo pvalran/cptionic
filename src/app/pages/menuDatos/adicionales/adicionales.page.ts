@@ -12,7 +12,7 @@ export class AdicionalesPage implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit() {
-    this.router.navigate(['/home']);
+    //this.router.navigate(['/home']);
   }
 
   guardarAdicionales(){

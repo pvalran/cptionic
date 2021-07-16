@@ -33,7 +33,7 @@ export class CaptureidPage implements OnInit {
   ngOnInit() {
     this.service.getPetition("documents/type/getByClass/1").subscribe(
       result => {
-        if(result.data.length > 0){
+        if(result.data.length > 0) {
           result.data.forEach(element => {
             this.lstDocumentoIndentidad.push(element)
           });

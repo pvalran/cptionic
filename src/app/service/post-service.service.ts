@@ -21,12 +21,11 @@ export class PostServiceService {
 
   //urlServer: string = "http://apicpt-env.eba-n3f3tpnc.us-east-1.elasticbeanstalk.com/";
   token: string = null;
-  urlServer: string = "http://3.131.97.198:8080/";
+  urlServer: string = "http://localhost:8080/";
 
   getPetition(url: string) {
     return this.httpClient.get<IObjRequest>(this.urlServer + url);
   }
-
 
   async postPetition(url: string, data: any, token: boolean = false) {
      return this.httpClient.post<IObjRequest>(this.urlServer + url, data,).toPromise();

@@ -28,6 +28,7 @@
     "@ionic/angular": "^5.5.2",
     "@ionic/storage": "^3.0.4",
     "@ionic/storage-angular": "^3.0.6",
+    "cordova-android": "9.1.0",
     "cordova-plugin-camera": "^5.0.2",
     "iamport-cordova": "^0.9.8",
     "rxjs": "~6.6.0",
